@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>CipherStego</title>
+  <link rel="stylesheet" href="/frontend_v2/styles.css">
+  <script src="/frontend_v2/app.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#extract" data-view="extract" aria-label="CipherStego, buka Ekstrak">
+      <span>CipherStego</span>
+    </a>
+    <nav class="primary-nav" aria-label="Ruang kerja">
+      <button type="button" class="nav-link active" data-view="extract" aria-current="page">Ekstrak</button>
+      <button type="button" class="nav-link" data-view="evaluate">Evaluasi</button>
+      <button type="button" class="nav-link" data-view="embed">Sisipkan</button>
+    </nav>
+    <span class="topbar-end" aria-hidden="true"></span>
+  </header>
+
+  <main class="workspace">
+    <section class="view active" id="view-extract" aria-labelledby="extract-title">
+      <header class="page-heading">
+        <div><h1 id="extract-title">Ekstrak dan verifikasi</h1><p>Baca header stego lalu verifikasi payload dengan passphrase.</p></div>
+      </header>
+      <div class="extract-layout">
+        <form class="control-column" id="extract-form">
+          <div class="form-section">
+            <label class="field-label" for="extract-file">Citra stego</label>
+            <div class="file-select">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3.75" y="4.75" width="16.5" height="14.5" rx="1.5" stroke="currentColor" stroke-width="1.5"/><circle cx="9" cy="10" r="1.5" stroke="currentColor" stroke-width="1.5"/><path d="m5 17 4.5-4.5 3 3 2.5-2.5 4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span class="file-name" id="extract-file-name">Pilih citra stego untuk membaca headernya</span>
+              <label class="file-action" for="extract-file">Pilih berkas</label>
+              <input id="extract-file" type="file" accept="image/png,.png" required aria-label="Pilih citra stego PNG">
+            </div>
+            <p class="field-help" id="extract-file-detail">PNG RGB 24-bit</p>
+            <button class="text-link" id="tamper-test" type="button">Uji: ubah 1 bit salt</button>
+          </div>
+
+          <fieldset class="mode-section">
+            <legend>Metode penyisipan</legend>
+            <label class="radio-row"><input type="radio" name="extract-mode" value="randomized" checked><span>Key-Based Randomized LSB</span></label>
+            <label class="radio-row"><input type="radio" name="extract-mode" value="sequential"><span>Sequential LSB</span></label>
+          </fieldset>
+
+          <div class="form-section">
+            <label class="field-label" for="extract-passphrase">Passphrase</label>
+            <div class="password-field">
+              <input id="extract-passphrase" type="password" autocomplete="current-password" required placeholder="Masukkan passphrase">
+              <button class="eye-button" type="button" data-password-toggle="extract-passphrase" aria-label="Tampilkan passphrase" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M2.75 12s3.25-6 9.25-6 9.25 6 9.25 6-3.25 6-9.25 6-9.25-6-9.25-6Z" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="2.5" stroke="currentColor" stroke-width="1.5"/></svg></button>
+            </div>
+          </div>
+          <button class="button primary full-button" type="submit" id="extract-submit">Ekstrak dan verifikasi PDF</button>
+          <p class="form-status" id="extract-status" role="status" aria-live="polite">Pilih citra stego untuk membaca headernya.</p>
+        </form>
+
+        <div class="workbench-column">
+          <section class="specimen-section" aria-labelledby="header-title">
+            <div class="specimen-heading">
+              <div><h2 id="header-title">Header 32 byte</h2><p class="visual-caveat">Visual, bukan verifikasi. Profil warna browser dapat memengaruhi bit yang terbaca.</p></div>
+              <span class="specimen-dimensions" id="header-dimensions"></span>
+            </div>
+            <div class="header-placeholder" id="header-placeholder">Pilih citra stego untuk membaca headernya</div>
+            <div class="header-fields" id="extract-header-fields" hidden>
+              <section class="header-field" data-header-field="salt">
+                <div class="field-heading"><h3>Salt, 16 byte</h3><code id="salt-hex"></code></div>
+                <div class="byte-grid" id="salt-bits" aria-label="Bit salt"></div>
+              </section>
+              <section class="header-field" data-header-field="nonce">
+                <div class="field-heading"><h3>Nonce, 12 byte</h3><code id="nonce-hex"></code></div>
+                <div class="byte-grid" id="nonce-bits" aria-label="Bit nonce"></div>
+              </section>
+              <section class="header-field" data-header-field="length">
+                <div class="field-heading"><h3>Panjang, 4 byte</h3><code id="length-hex"></code></div>
+                <div class="byte-grid length-grid" id="length-bits" aria-label="Bit panjang ciphertext"></div>
+                <p class="length-reading" id="length-reading"></p>
+              </section>
+            </div>
+          </section>
+
+          <section class="verification-section" aria-labelledby="trace-title">
+            <div class="verification-heading"><h2 id="trace-title">Jejak verifikasi</h2><span id="trace-total"></span></div>
+            <ol class="trace-list" id="extract-trace">
+              <li data-stage="header"><span class="trace-index">01</span><span>Baca header</span><span class="trace-state">Menunggu</span></li>
+              <li data-stage="derive"><span class="trace-index">02</span><span>Turunkan kunci dengan PBKDF2</span><span class="trace-state">Menunggu</span></li>
+              <li data-stage="positions"><span class="trace-index">03</span><span>Bangun ulang posisi</span><span class="trace-state">Menunggu</span></li>
+              <li data-stage="bits"><span class="trace-index">04</span><span>Baca bit payload</span><span class="trace-state">Menunggu</span></li>
+              <li data-stage="tag"><span class="trace-index">05</span><span>Verifikasi tag AES-GCM</span><span class="trace-state">Menunggu</span></li>
+            </ol>
+            <div class="verification-result" id="extract-result" role="status" aria-live="polite" hidden></div>
+            <div class="recovered-hash" id="recovered-hash" hidden></div>
+            <button class="button secondary recovered-download" id="download-pdf" type="button" hidden>Unduh PDF pulih</button>
+            <div class="tamper-download" id="tamper-download" hidden><button class="button secondary" type="button" id="download-tampered">Unduh PNG uji</button></div>
+          </section>
+          <p class="auth-note">Tag GCM membuktikan data cocok dengan kunci bersama, bukan identitas pengirim.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="view" id="view-evaluate" aria-labelledby="evaluate-title" hidden>
+      <header class="page-heading"><div><h1 id="evaluate-title">Evaluasi metode</h1><p>Bandingkan hasil pada PDF dan PNG yang sama.</p></div></header>
+      <form class="evaluate-layout" id="evaluate-form">
+        <div class="evaluate-controls">
+          <div class="form-section">
+            <label class="field-label" for="evaluate-pdf">Dokumen PDF</label>
+            <div class="file-select compact-file"><span class="file-name" id="evaluate-pdf-name">Pilih dokumen PDF</span><label class="file-action" for="evaluate-pdf">Pilih berkas</label><input id="evaluate-pdf" type="file" accept="application/pdf,.pdf" required></div>
+          </div>
+          <div class="form-section">
+            <label class="field-label" for="evaluate-cover">Citra penampung</label>
+            <div class="file-select compact-file"><span class="file-name" id="evaluate-cover-name">Pilih PNG RGB</span><label class="file-action" for="evaluate-cover">Pilih berkas</label><input id="evaluate-cover" type="file" accept="image/png,.png" required></div>
+          </div>
+          <div class="form-section">
+            <label class="field-label" for="evaluate-passphrase">Passphrase uji</label>
+            <input class="text-input" id="evaluate-passphrase" type="password" autocomplete="new-password" minlength="12" required placeholder="Minimal 12 karakter">
+          </div>
+          <button class="button primary full-button" id="evaluate-submit" type="submit">Jalankan evaluasi</button>
+          <p class="form-status" id="evaluate-status" role="status" aria-live="polite">MSE, PSNR, dan SSIM tampil setelah evaluasi.</p>
+        </div>
+        <div class="evaluation-workbench">
+          <div class="evaluation-summary"><p>Satu PDF, satu cover PNG, dua metode.</p><p>Hasil satu pasangan tidak mewakili matriks eksperimen.</p></div>
+          <section class="evaluation-results" id="evaluation-results" hidden>
+            <div class="evaluation-heading"><div><h2>Perbandingan</h2><p id="evaluation-subtitle"></p></div><button class="button secondary" id="download-csv" type="button">Unduh CSV</button></div>
+            <div class="metric-strip">
+              <div><span>MSE</span><strong id="metric-mse">—</strong></div>
+              <div><span>PSNR</span><strong id="metric-psnr">—</strong></div>
+              <div><span>SSIM</span><strong id="metric-ssim">—</strong></div>
+            </div>
+            <div class="table-scroll"><table><thead><tr><th>Metrik</th><th>Sequential LSB</th><th>Key-Based Randomized LSB</th><th>Catatan</th></tr></thead><tbody id="evaluation-table"></tbody></table></div>
+            <p class="table-note" id="evaluation-note"></p>
+            <section class="plane-section" id="plane-section" hidden aria-labelledby="plane-title">
+              <div class="plane-heading"><div><h2 id="plane-title">Bidang LSB</h2><p>Kanal R, G, dan B ditampilkan sebagai bit 0 atau 1.</p></div><span class="change-key"><i aria-hidden="true"></i>Piksel berubah</span></div>
+              <p class="plane-status" id="plane-status" role="status" aria-live="polite"></p>
+              <div class="plane-grid">
+                <figure><figcaption>Cover asli</figcaption><canvas id="plane-original" aria-label="Bidang LSB citra asli"></canvas></figure>
+                <figure><figcaption>Sequential LSB</figcaption><canvas id="plane-sequential" aria-label="Bidang LSB hasil Sequential dengan piksel berubah ditandai"></canvas></figure>
+                <figure><figcaption>Key-Based Randomized LSB</figcaption><canvas id="plane-randomized" aria-label="Bidang LSB hasil Randomized dengan piksel berubah ditandai"></canvas></figure>
+              </div>
+              <p class="plane-footnote">Perbandingan visual dari dua penyisipan terpisah. Angka tabel berasal dari satu ciphertext yang sama pada evaluasi server.</p>
+            </section>
+          </section>
+        </div>
+      </form>
+      <p class="auth-note">Chi-square dan RS adalah indikator eksploratif, bukan bukti bahwa pesan tidak dapat dideteksi.</p>
+    </section>
+
+    <section class="view" id="view-embed" aria-labelledby="embed-title" hidden>
+      <header class="page-heading"><div><h1 id="embed-title">Sisipkan dan enkripsi</h1><p>Enkripsi PDF lalu sisipkan ciphertext ke citra PNG.</p></div></header>
+      <div class="embed-layout">
+        <form class="control-column" id="embed-form">
+          <div class="form-section">
+            <label class="field-label" for="embed-pdf">Dokumen PDF</label>
+            <div class="file-select"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 3.75h8l4 4v12.5H6zM14 3.75v4h4M8.5 13h7M8.5 16h7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="file-name" id="embed-pdf-name">Pilih dokumen PDF</span><label class="file-action" for="embed-pdf">Pilih berkas</label><input id="embed-pdf" type="file" accept="application/pdf,.pdf" required></div>
+            <p class="field-help" id="embed-pdf-detail">PDF, maksimal 600 KiB</p>
+          </div>
+          <div class="form-section">
+            <label class="field-label" for="embed-cover">Citra penampung</label>
+            <div class="file-select"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3.75" y="4.75" width="16.5" height="14.5" rx="1.5" stroke="currentColor" stroke-width="1.5"/><circle cx="9" cy="10" r="1.5" stroke="currentColor" stroke-width="1.5"/><path d="m5 17 4.5-4.5 3 3 2.5-2.5 4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="file-name" id="embed-cover-name">Pilih PNG RGB</span><label class="file-action" for="embed-cover">Pilih berkas</label><input id="embed-cover" type="file" accept="image/png,.png" required></div>
+            <div class="cover-preview" id="embed-cover-preview-wrap" hidden><img id="embed-cover-preview" alt="Pratinjau citra penampung"><span id="embed-cover-dimensions"></span></div>
+            <p class="field-help" id="embed-capacity-help">Kapasitas dihitung setelah citra dipilih.</p>
+            <div class="capacity-line"><span id="embed-capacity-fill"></span></div>
+            <div class="capacity-copy"><span>Kapasitas terpakai</span><span id="embed-capacity-value">—</span></div>
+          </div>
+          <fieldset class="mode-section">
+            <legend>Metode penyisipan</legend>
+            <label class="radio-row"><input type="radio" name="embed-mode" value="randomized" checked><span>Key-Based Randomized LSB</span></label>
+            <label class="radio-row"><input type="radio" name="embed-mode" value="sequential"><span>Sequential LSB</span></label>
+          </fieldset>
+          <div class="form-section">
+            <label class="field-label" for="embed-passphrase">Passphrase</label>
+            <div class="password-field"><input id="embed-passphrase" type="password" autocomplete="new-password" minlength="12" required placeholder="Minimal 12 karakter"><button class="eye-button" type="button" data-password-toggle="embed-passphrase" aria-label="Tampilkan passphrase" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M2.75 12s3.25-6 9.25-6 9.25 6 9.25 6-3.25 6-9.25 6-9.25-6-9.25-6Z" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="2.5" stroke="currentColor" stroke-width="1.5"/></svg></button></div>
+          </div>
+          <button class="button primary full-button" id="embed-submit" type="submit">Enkripsi dan sisipkan ke PNG</button>
+          <p class="form-status" id="embed-status" role="status" aria-live="polite">Pilih PDF dan citra penampung.</p>
+        </form>
+        <div class="embed-workbench">
+          <div class="result-placeholder" id="embed-placeholder">Hasil stego akan tampil di sini setelah penyisipan.</div>
+          <section class="embed-result" id="embed-result" hidden>
+            <div class="evaluation-heading"><div><h2>Stego-PNG siap</h2><p id="embed-result-name"></p></div><button class="button primary" id="download-stego" type="button">Unduh stego-PNG</button></div>
+            <img class="stego-preview" id="stego-preview" alt="Pratinjau stego-PNG hasil penyisipan">
+            <div class="header-breakdown"><div><strong>16 byte</strong><span>Salt</span></div><div><strong>12 byte</strong><span>Nonce</span></div><div><strong>4 byte</strong><span>Panjang</span></div></div>
+            <dl class="result-metadata" id="embed-metadata"></dl>
+            <div class="embed-hash" id="embed-hash"></div>
+          </section>
+        </div>
+      </div>
+      <p class="auth-note">Berkas diproses melalui server loopback. Passphrase tidak disimpan.</p>
+    </section>
+  </main>
+</body>
+</html>
