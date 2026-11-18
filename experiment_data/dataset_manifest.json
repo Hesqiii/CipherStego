@@ -1,0 +1,215 @@
+{
+  "covers": [
+    {
+      "color_mode": null,
+      "dimensions": null,
+      "filename": null,
+      "reason": "Berkas dengan kode C1 belum tersedia.",
+      "sample_id": "C1",
+      "sha256": null,
+      "size_bytes": null,
+      "status": "missing"
+    },
+    {
+      "color_mode": null,
+      "dimensions": null,
+      "filename": null,
+      "reason": "Berkas dengan kode C2 belum tersedia.",
+      "sample_id": "C2",
+      "sha256": null,
+      "size_bytes": null,
+      "status": "missing"
+    },
+    {
+      "color_mode": null,
+      "dimensions": null,
+      "filename": null,
+      "reason": "Berkas dengan kode C3 belum tersedia.",
+      "sample_id": "C3",
+      "sha256": null,
+      "size_bytes": null,
+      "status": "missing"
+    }
+  ],
+  "created_utc": "2026-11-18T15:10:27.685765+00:00",
+  "dataset_format_valid": false,
+  "dataset_root": "dataset",
+  "excluded_non_dataset_files": [
+    {
+      "color_mode": "RGB",
+      "dimensions": [
+        120,
+        100
+      ],
+      "filename": ".m6-test-artifacts/cover.png",
+      "reason": "Artefak pengujian milestone lama; bukan sampel penelitian terdaftar. Resolusi tidak sesuai spesifikasi cover 1920×1080.",
+      "sha256": "491602e0bc8927fc5a7d63fffd8fa0b9530daad4c5c8b30df4a483c7bbf9b07b",
+      "size_bytes": 303,
+      "status": "excluded_test_fixture"
+    },
+    {
+      "color_mode": null,
+      "dimensions": null,
+      "filename": ".m6-test-artifacts/source.pdf",
+      "reason": "Artefak pengujian milestone lama; bukan sampel penelitian terdaftar. Ukuran PDF di bawah batas 10 KiB.",
+      "sha256": "15ec4c327106a4b6353ab4a61d7b2b47b41e8fad5e8ae81e5d39c8e20d5b652c",
+      "size_bytes": 55,
+      "status": "excluded_test_fixture"
+    }
+  ],
+  "invalid_cover_ids": [],
+  "invalid_payload_ids": [],
+  "manifest_version": 1,
+  "missing_cover_ids": [
+    "C1",
+    "C2",
+    "C3"
+  ],
+  "missing_payload_ids": [
+    "P01",
+    "P02",
+    "P03",
+    "P04",
+    "P05",
+    "P06",
+    "P07",
+    "P08",
+    "P09",
+    "P10"
+  ],
+  "payloads": [
+    {
+      "color_mode": null,
+      "dimensions": null,
+      "filename": null,
+      "privacy_review": "manual_review_required",
+      "reason": "Berkas dengan kode P01 belum tersedia.",
+      "sample_id": "P01",
+      "sha256": null,
+      "size_bytes": null,
+      "status": "missing"
+    },
+    {
+      "color_mode": null,
+      "dimensions": null,
+      "filename": null,
+      "privacy_review": "manual_review_required",
+      "reason": "Berkas dengan kode P02 belum tersedia.",
+      "sample_id": "P02",
+      "sha256": null,
+      "size_bytes": null,
+      "status": "missing"
+    },
+    {
+      "color_mode": null,
+      "dimensions": null,
+      "filename": null,
+      "privacy_review": "manual_review_required",
+      "reason": "Berkas dengan kode P03 belum tersedia.",
+      "sample_id": "P03",
+      "sha256": null,
+      "size_bytes": null,
+      "status": "missing"
+    },
+    {
+      "color_mode": null,
+      "dimensions": null,
+      "filename": null,
+      "privacy_review": "manual_review_required",
+      "reason": "Berkas dengan kode P04 belum tersedia.",
+      "sample_id": "P04",
+      "sha256": null,
+      "size_bytes": null,
+      "status": "missing"
+    },
+    {
+      "color_mode": null,
+      "dimensions": null,
+      "filename": null,
+      "privacy_review": "manual_review_required",
+      "reason": "Berkas dengan kode P05 belum tersedia.",
+      "sample_id": "P05",
+      "sha256": null,
+      "size_bytes": null,
+      "status": "missing"
+    },
+    {
+      "color_mode": null,
+      "dimensions": null,
+      "filename": null,
+      "privacy_review": "manual_review_required",
+      "reason": "Berkas dengan kode P06 belum tersedia.",
+      "sample_id": "P06",
+      "sha256": null,
+      "size_bytes": null,
+      "status": "missing"
+    },
+    {
+      "color_mode": null,
+      "dimensions": null,
+      "filename": null,
+      "privacy_review": "manual_review_required",
+      "reason": "Berkas dengan kode P07 belum tersedia.",
+      "sample_id": "P07",
+      "sha256": null,
+      "size_bytes": null,
+      "status": "missing"
+    },
+    {
+      "color_mode": null,
+      "dimensions": null,
+      "filename": null,
+      "privacy_review": "manual_review_required",
+      "reason": "Berkas dengan kode P08 belum tersedia.",
+      "sample_id": "P08",
+      "sha256": null,
+      "size_bytes": null,
+      "status": "missing"
+    },
+    {
+      "color_mode": null,
+      "dimensions": null,
+      "filename": null,
+      "privacy_review": "manual_review_required",
+      "reason": "Berkas dengan kode P09 belum tersedia.",
+      "sample_id": "P09",
+      "sha256": null,
+      "size_bytes": null,
+      "status": "missing"
+    },
+    {
+      "color_mode": null,
+      "dimensions": null,
+      "filename": null,
+      "privacy_review": "manual_review_required",
+      "reason": "Berkas dengan kode P10 belum tersedia.",
+      "sample_id": "P10",
+      "sha256": null,
+      "size_bytes": null,
+      "status": "missing"
+    }
+  ],
+  "privacy_review": {
+    "dataset_fingerprint": "130a6a81426aa3aade8bfe2e6e811fbe92a911101bec99bce1a6190cd2841522",
+    "note": "Automated checks cannot establish that PDF contents contain no personal or sensitive data.",
+    "review_file": "privacy_review.json",
+    "status": "required_manual_attestation"
+  },
+  "ready_for_pilot": false,
+  "requirements": {
+    "covers": {
+      "count": 3,
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "format": "PNG RGB 24-bit"
+    },
+    "payloads": {
+      "count": 10,
+      "max_bytes": 614400,
+      "min_bytes": 10240
+    }
+  },
+  "unassigned_files": []
+}

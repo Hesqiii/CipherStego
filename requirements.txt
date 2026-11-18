@@ -1,5 +1,9 @@
+fastapi==0.163.1
+uvicorn==0.54.0
 cryptography==50.0.2
 Pillow==13.0.0
 numpy==2.5.4
 scipy==1.18.1
 scikit-image==0.26.0
+pytest==9.2.0
+httpx2==2.16.2

@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <meta name="theme-color" content="#f4f5f3">
+  <title>CipherStego | Workstation Keamanan Dokumen</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <button class="brand" id="brand-home" type="button" aria-label="Buka Sisipkan dan enkripsi">
+      <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span>
+      <span class="brand-copy"><strong>CipherStego</strong><small>Keamanan dokumen lokal</small></span>
+    </button>
+    <div class="topbar-status">
+      <span class="status-pip" aria-hidden="true"></span>
+      <span id="backend-status" role="status" aria-live="polite">Memeriksa backend lokal</span>
+    </div>
+  </header>
+
+  <aside class="sidebar" id="sidebar">
+    <div class="nav-group">
+      <p class="nav-caption">WORKSPACE</p>
+      <nav class="main-nav" aria-label="Navigasi utama">
+        <button type="button" class="nav-link active" data-view="embed" aria-current="page">
+          <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3.75h8l4 4v12.5H6z"/><path d="M14 3.75v4h4M9 13h6M9 16.5h6"/><path d="M3.75 7v13.25H16"/></svg>
+          <span>Sisipkan &amp; enkripsi</span>
+        </button>
+        <button type="button" class="nav-link" data-view="extract">
+          <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3.75h8l4 4v12.5H6z"/><path d="M14 3.75v4h4M9 13h6M9 16.5h4"/><path d="M3.75 7v13.25H16"/><path d="M17.5 13.5 20 16l-2.5 2.5M20 16h-5"/></svg>
+          <span>Ekstrak &amp; dekripsi</span>
+        </button>
+        <button type="button" class="nav-link" data-view="evaluate">
+          <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19.5h16M6.5 16V10M11.75 16V5M17 16v-3.5"/><path d="M5.5 7.5 10 4l4 3 4.5-3"/></svg>
+          <span>Evaluasi</span>
+        </button>
+      </nav>
+    </div>
+
+    <section class="spec-panel" aria-labelledby="spec-title">
+      <div class="spec-heading"><span class="spec-rule" aria-hidden="true"></span><h2 id="spec-title">Parameter proposal</h2></div>
+      <dl>
+        <dt>Enkripsi</dt><dd>AES-256-GCM</dd>
+        <dt>Derivasi</dt><dd>PBKDF2 · 600.000</dd>
+        <dt>Header</dt><dd>32 byte</dd>
+        <dt>Metode aktif</dt><dd>Sequential LSB</dd>
+      </dl>
+      <p>PDF dan PNG diproses oleh backend FastAPI di komputer ini. File tidak dikirim ke layanan luar.</p>
+    </section>
+  </aside>
+
+  <main class="workspace">
+    <div class="local-notice" role="note">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 20 7v5.2c0 4.2-3.1 7.1-8 8.3-4.9-1.2-8-4.1-8-8.3V7z"/><path d="m9 12 2 2 4-4"/></svg>
+      <p><strong>Ruang kerja lokal.</strong> File dan passphrase dikirim hanya ke backend lokal di komputer ini untuk diproses.</p>
+    </div>
+
+    <section class="view active" id="view-embed" aria-labelledby="embed-title">
+      <header class="page-heading">
+        <div>
+          <p class="eyebrow">01 / PENGIRIM</p>
+          <h1 id="embed-title" tabindex="-1">Sisipkan dan enkripsi</h1>
+          <p class="page-intro">Enkripsi PDF, sisipkan payload ke PNG RGB, lalu unduh hasilnya.</p>
+        </div>
+        <div class="method-stamp"><span class="stamp-dot" aria-hidden="true"></span><span id="embed-method-stamp">Sequential LSB</span></div>
+      </header>
+
+      <div class="work-grid">
+        <section class="panel input-panel" aria-labelledby="sender-files-title">
+          <div class="panel-heading">
+            <span class="step-mark" aria-hidden="true">A</span>
+            <div><h2 id="sender-files-title">Berkas sumber</h2><p>Pilih PDF dan PNG RGB 24-bit.</p></div>
+          </div>
+
+          <div class="field-block">
+            <span class="field-label" id="pdf-label">Dokumen PDF</span>
+            <label class="drop-zone" for="embed-pdf" data-drop-zone data-for="embed-pdf">
+              <input class="file-input" id="embed-pdf" type="file" accept="application/pdf,.pdf" aria-labelledby="pdf-label" aria-describedby="pdf-help">
+              <svg class="upload-glyph" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 3.75h7l4 4v12.5h-11z"/><path d="M13.5 3.75v4h4M9 14h6M12 17V10m-2.5 2.5L12 10l2.5 2.5"/></svg>
+              <span class="drop-copy"><strong>Seret PDF ke sini</strong><span>atau pilih dari perangkat · maksimal 600 KiB</span></span>
+              <span class="choose-file">Pilih PDF</span>
+            </label>
+            <p class="field-help" id="pdf-help">Backend memvalidasi signature dan batas ukuran 600 KiB sebelum enkripsi.</p>
+            <div class="file-summary" id="embed-pdf-summary" role="status" aria-live="polite" hidden></div>
+          </div>
+
+          <div class="field-block">
+            <span class="field-label" id="cover-label">Citra penampung</span>
+            <label class="drop-zone" for="embed-cover" data-drop-zone data-for="embed-cover">
+              <input class="file-input" id="embed-cover" type="file" accept="image/png,.png" aria-labelledby="cover-label" aria-describedby="cover-help">
+              <svg class="upload-glyph" viewBox="0 0 24 24" aria-hidden="true"><rect x="3.75" y="4.25" width="16.5" height="15.5" rx="1.5"/><circle cx="9" cy="9" r="1.5"/><path d="m5 17 5-5 3 3 2-2 4 4"/></svg>
+              <span class="drop-copy"><strong>Seret PNG RGB ke sini</strong><span>atau pilih citra dari perangkat</span></span>
+              <span class="choose-file">Pilih PNG</span>
+            </label>
+            <p class="field-help" id="cover-help">Gunakan PNG RGB 8-bit. Backend memvalidasi ulang format, CRC, dimensi, dan kapasitas.</p>
+            <div class="file-summary" id="embed-cover-summary" role="status" aria-live="polite" hidden></div>
+            <div class="capacity-readout" id="capacity-readout" hidden>
+              <div><span>Kapasitas untuk PDF</span><strong id="capacity-value">Belum dihitung</strong></div>
+              <div class="capacity-track" aria-hidden="true"><span id="capacity-bar"></span></div>
+              <p id="capacity-detail">Kapasitas mempertimbangkan header 32 byte dan tag GCM 16 byte.</p>
+            </div>
+            <div class="preview-frame" id="cover-preview-frame" hidden>
+              <img id="cover-preview" alt="Pratinjau citra penampung yang dipilih">
+              <span class="preview-caption" id="cover-preview-caption"></span>
+            </div>
+          </div>
+
+          <fieldset class="method-choice">
+            <legend>Metode penyisipan</legend>
+            <label class="method-option selected">
+              <input type="radio" name="embed-mode" value="sequential" checked>
+              <span><strong>Sequential LSB</strong><small>Header dan ciphertext ditempatkan berurutan.</small></span>
+              <span class="available-mark">Tersedia</span>
+            </label>
+            <label class="method-option">
+              <input type="radio" name="embed-mode" value="randomized" aria-describedby="randomized-note">
+              <span><strong>Key-Based Randomized LSB</strong><small id="randomized-note">Posisi payload ditentukan dari K_pos yang diturunkan dari passphrase.</small></span>
+              <span class="available-mark">Tersedia</span>
+            </label>
+          </fieldset>
+          <p class="field-help" id="embed-kpos-note" hidden>K_pos berasal dari HKDF dan dipakai lokal untuk menyusun ulang urutan posisi. Kunci tidak dikirim kembali ke browser.</p>
+
+          <div class="field-block passphrase-block">
+            <label class="field-label" for="embed-pass">Passphrase pengirim</label>
+            <div class="password-control"><input id="embed-pass" type="password" autocomplete="off" minlength="12" placeholder="Minimal 12 karakter"><button class="text-button" type="button" data-toggle-password="embed-pass" aria-pressed="false">Tampilkan</button></div>
+            <p class="field-help">Passphrase hanya digunakan selama proses di memori browser dan tidak disimpan ke penyimpanan browser.</p>
+          </div>
+
+          <div class="action-block">
+            <button class="button primary" id="embed-submit" type="button" disabled aria-describedby="embed-status">Enkripsi dan sisipkan</button>
+            <p class="status" id="embed-status" role="status" aria-live="polite">Pilih PDF, PNG RGB, dan passphrase untuk memulai.</p>
+          </div>
+        </section>
+
+        <section class="panel output-panel" aria-labelledby="embed-output-title">
+          <div class="panel-heading">
+            <span class="step-mark output-mark" aria-hidden="true">B</span>
+            <div><h2 id="embed-output-title">Hasil stego-image</h2><p>Hasil aktual dari backend lokal.</p></div>
+          </div>
+          <div class="empty-state" id="embed-empty">
+            <div class="empty-document" aria-hidden="true"><span></span><span></span><span></span></div>
+            <h3>Belum ada hasil</h3>
+            <p>Hasil PNG akan muncul di sini setelah proses pengamanan berhasil.</p>
+          </div>
+          <div class="result-content" id="embed-result" hidden aria-live="polite">
+            <p class="status" id="embed-result-status" role="status"></p>
+            <div class="preview-frame result-preview"><img id="stego-result-preview" alt="Pratinjau stego-PNG hasil pengamanan"><span class="preview-caption" id="stego-result-caption"></span></div>
+            <dl class="result-metadata">
+              <div><dt>Metode</dt><dd id="embed-result-method"></dd></div>
+              <div><dt>Dimensi</dt><dd id="embed-result-dimensions"></dd></div>
+              <div><dt>Payload PDF</dt><dd id="embed-result-payload"></dd></div>
+              <div><dt>Kapasitas terpakai</dt><dd id="embed-result-capacity"></dd></div>
+              <div><dt>Waktu proses</dt><dd id="embed-result-time"></dd></div>
+              <div class="hash-row"><dt>SHA-256 PDF sumber</dt><dd id="embed-result-hash"></dd></div>
+            </dl>
+            <a class="button secondary download-link" id="stego-download" download>Unduh stego-PNG</a>
+          </div>
+          <div class="result-placeholder">
+            <span class="placeholder-rule" aria-hidden="true"></span>
+            <div><strong>Urutan pengamanan</strong><p>PDF dienkripsi dengan AES-GCM sebelum header dan ciphertext disisipkan berurutan.</p></div>
+          </div>
+        </section>
+      </div>
+
+      <section class="process-note" aria-label="Urutan pengamanan">
+        <span class="process-label">URUTAN DATA</span>
+        <p id="embed-process-sequence">Salt → PBKDF2 → HKDF → AES-GCM → header + ciphertext → Sequential LSB</p>
+        <small>Header 32 byte menjadi AAD. AES-GCM memverifikasi header dan ciphertext saat ekstraksi.</small>
+      </section>
+    </section>
+
+    <section class="view" id="view-extract" aria-labelledby="extract-title" hidden>
+      <header class="page-heading">
+        <div>
+          <p class="eyebrow">02 / PENERIMA</p>
+          <h1 id="extract-title" tabindex="-1">Ekstrak dan pulihkan</h1>
+          <p class="page-intro">Ekstrak payload dan pulihkan PDF setelah autentikasi GCM berhasil.</p>
+        </div>
+        <div class="method-stamp"><span class="stamp-dot" aria-hidden="true"></span><span id="extract-method-stamp">Sequential LSB</span></div>
+      </header>
+
+      <div class="work-grid">
+        <section class="panel input-panel" aria-labelledby="receiver-file-title">
+          <div class="panel-heading"><span class="step-mark" aria-hidden="true">A</span><div><h2 id="receiver-file-title">Stego-PNG</h2><p>Pilih gambar hasil penyisipan yang valid.</p></div></div>
+          <div class="field-block">
+            <span class="field-label" id="stego-label">Citra stego</span>
+            <label class="drop-zone" for="extract-stego" data-drop-zone data-for="extract-stego">
+              <input class="file-input" id="extract-stego" type="file" accept="image/png,.png" aria-labelledby="stego-label" aria-describedby="stego-help">
+              <svg class="upload-glyph" viewBox="0 0 24 24" aria-hidden="true"><rect x="3.75" y="4.25" width="16.5" height="15.5" rx="1.5"/><circle cx="9" cy="9" r="1.5"/><path d="m5 17 5-5 3 3 2-2 4 4"/></svg>
+              <span class="drop-copy"><strong>Seret stego-PNG ke sini</strong><span>atau pilih file dari perangkat</span></span>
+              <span class="choose-file">Pilih PNG</span>
+            </label>
+            <p class="field-help" id="stego-help">Pratinjau tidak membaca isi PDF. Header, ciphertext, dan tag GCM divalidasi oleh backend.</p>
+            <div class="file-summary" id="extract-stego-summary" role="status" aria-live="polite" hidden></div>
+            <div class="preview-frame receiver-preview" id="stego-preview-frame" hidden>
+              <img id="stego-preview" alt="Pratinjau stego-PNG yang dipilih">
+              <span class="preview-caption" id="stego-preview-caption"></span>
+            </div>
+          </div>
+
+          <div class="field-block passphrase-block">
+            <label class="field-label" for="extract-pass">Passphrase penerima</label>
+            <div class="password-control"><input id="extract-pass" type="password" autocomplete="off" minlength="12" placeholder="Masukkan passphrase pengirim"><button class="text-button" type="button" data-toggle-password="extract-pass" aria-pressed="false">Tampilkan</button></div>
+            <p class="field-help">Passphrase hanya digunakan selama proses di memori browser dan tidak disimpan ke penyimpanan browser.</p>
+          </div>
+
+          <fieldset class="method-choice">
+            <legend>Metode saat penyisipan</legend>
+            <label class="method-option selected"><input type="radio" name="extract-mode" value="sequential" checked><span><strong>Sequential LSB</strong><small>Baca header dan ciphertext secara berurutan.</small></span><span class="available-mark">Tersedia</span></label>
+            <label class="method-option"><input type="radio" name="extract-mode" value="randomized" aria-describedby="extract-randomized-note"><span><strong>Key-Based Randomized LSB</strong><small id="extract-randomized-note">Header dibaca berurutan; posisi ciphertext direkonstruksi dari K_pos.</small></span><span class="available-mark">Tersedia</span></label>
+          </fieldset>
+          <p class="field-help" id="extract-kpos-note" hidden>K_pos diturunkan dari passphrase dan salt pada header, lalu hanya digunakan lokal untuk merekonstruksi posisi payload.</p>
+
+          <div class="action-block">
+            <button class="button primary" id="extract-submit" type="button" disabled aria-describedby="extract-status">Ekstrak dan verifikasi</button>
+            <p class="status" id="extract-status" role="status" aria-live="polite">Pilih stego-PNG dan masukkan passphrase untuk memulai.</p>
+          </div>
+
+          <div class="tamper-note">
+            <span class="tamper-mark" aria-hidden="true">!</span>
+            <p><strong>Autentikasi payload</strong><br>Passphrase salah atau data yang berubah akan ditolak. PDF hanya tersedia setelah tag GCM valid.</p>
+          </div>
+        </section>
+
+        <section class="panel output-panel" aria-labelledby="gcm-output-title">
+          <div class="panel-heading"><span class="step-mark output-mark" aria-hidden="true">B</span><div><h2 id="gcm-output-title">Autentikasi GCM</h2><p>PDF hanya dapat ditampilkan setelah tag valid.</p></div></div>
+          <div class="empty-state" id="extract-empty">
+            <div class="verification-seal" aria-hidden="true"><span></span></div>
+            <h3>Menunggu verifikasi</h3>
+            <p>PDF tidak akan dibuat atau ditampilkan sebelum autentikasi GCM berhasil.</p>
+          </div>
+          <div class="result-content" id="extract-result" hidden aria-live="polite">
+            <p class="status" id="extract-result-status" role="status"></p>
+            <dl class="result-metadata">
+              <div><dt>Metode</dt><dd id="extract-result-method"></dd></div>
+              <div><dt>Status autentikasi</dt><dd id="extract-result-auth"></dd></div>
+              <div><dt>Ukuran PDF pulih</dt><dd id="extract-result-size"></dd></div>
+              <div><dt>Waktu proses</dt><dd id="extract-result-time"></dd></div>
+              <div class="hash-row"><dt>SHA-256 PDF pulih</dt><dd id="extract-result-hash"></dd></div>
+            </dl>
+            <a class="button secondary download-link" id="pdf-download" download>Unduh PDF pulih</a>
+          </div>
+          <div class="result-placeholder">
+            <span class="placeholder-rule" aria-hidden="true"></span>
+            <div><strong>Aturan pemulihan</strong><p>Tag GCM memeriksa ciphertext serta header yang diteruskan sebagai AAD.</p></div>
+          </div>
+        </section>
+      </div>
+
+      <section class="process-note" aria-label="Batas autentikasi">
+        <span class="process-label">BATAS AUTENTIKASI</span>
+        <p>Tag valid menunjukkan data cocok dengan kunci bersama.</p>
+        <small>Tag tidak membuktikan identitas pengirim. SHA-256 dipakai sebagai pembanding integritas file, bukan autentikasi.</small>
+      </section>
+    </section>
+
+    <section class="view" id="view-evaluate" aria-labelledby="evaluate-title" hidden>
+      <header class="page-heading">
+        <div>
+          <p class="eyebrow">03 / EVALUASI</p>
+          <h1 id="evaluate-title" tabindex="-1">Rencana pengujian</h1>
+          <p class="page-intro">Metrik dan perbandingan mengikuti skenario proposal.</p>
+        </div>
+        <div class="method-stamp pending-stamp"><span class="stamp-dot" aria-hidden="true"></span>Menunggu backend</div>
+      </header>
+
+      <section class="panel study-panel" aria-labelledby="study-title">
+        <div class="study-intro">
+          <div class="panel-heading"><span class="step-mark" aria-hidden="true">S</span><div><h2 id="study-title">Rancangan eksperimen</h2><p>API dapat mengevaluasi satu sampel; halaman ini belum mengirim permintaan evaluasi.</p></div></div>
+          <dl class="study-facts">
+            <div><dt>Payload</dt><dd>10 PDF · 10–600 KiB</dd></div>
+            <div><dt>Cover</dt><dd>3 PNG RGB · 1920 × 1080</dd></div>
+            <div><dt>Perbandingan</dt><dd>30 pasangan metode</dd></div>
+            <div><dt>Pengulangan waktu</dt><dd>5 kali per kombinasi</dd></div>
+          </dl>
+        </div>
+        <div class="table-section">
+          <div class="table-heading"><div><h2>Metrik penelitian</h2><p>Belum ada hasil eksperimen yang ditampilkan pada halaman ini.</p></div><span class="pending-label">Belum ada hasil</span></div>
+          <div class="table-wrap" role="region" aria-label="Tabel metrik penelitian" tabindex="0">
+            <table>
+              <thead><tr><th scope="col">Metrik</th><th scope="col">Sequential LSB</th><th scope="col">Key-Based Randomized LSB</th><th scope="col">Status</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">MSE, PSNR, SSIM</th><td>MSE/PSNR tersedia melalui API</td><td>MSE/PSNR tersedia melalui API</td><td>SSIM belum terdefinisi lengkap</td></tr>
+                <tr><th scope="row">Waktu embedding dan extraction</th><td>Tersedia per permintaan API</td><td>Tersedia per permintaan API</td><td>Belum ada lima ulangan eksperimen</td></tr>
+                <tr><th scope="row">Chi-square dan RS analysis</th><td>Belum dianalisis</td><td>Belum dianalisis</td><td>Metodologi belum terdefinisi lengkap</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="evaluation-status" role="status"><span class="status-pip pending-pip" aria-hidden="true"></span><p>Endpoint evaluasi satu sampel tersedia; halaman ini belum menjalankan atau menyimpan pengukuran.</p></div>
+        </div>
+      </section>
+
+      <section class="process-note" aria-label="Batas interpretasi">
+        <span class="process-label">INTERPRETASI</span>
+        <p>Belum ada angka hasil pada halaman ini.</p>
+        <small>Pengujian satu pasangan tidak menggantikan dataset proposal. Chi-square dan RS analysis juga bukan bukti bahwa pesan tidak dapat dideteksi.</small>
+      </section>
+    </section>
+  </main>
+</body>
+</html>
