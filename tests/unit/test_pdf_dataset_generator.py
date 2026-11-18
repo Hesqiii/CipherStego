@@ -6,7 +6,6 @@ from pathlib import Path
 import pytest
 
 from tools.dataset_creation.generate_pdfs import (
-    DEFAULT_REPORT,
     SPECS,
     _build_pdf,
     generate_dataset,
@@ -81,4 +80,5 @@ def test_invalid_pdf_is_rejected(tmp_path: Path) -> None:
 
     with pytest.raises(ValueError, match="Struktur dasar PDF"):
         validate_pdf(bad_pdf, 1)
+
 

@@ -1,0 +1,202 @@
+{
+  "created_utc": "2026-11-18T15:52:43.450121+00:00",
+  "generator": "tools/dataset_creation/generate_pdfs.py",
+  "outputs": [
+    {
+      "characteristic": "Surat satu halaman",
+      "difference_bytes": 7442,
+      "filename": "P01.pdf",
+      "page_count": 1,
+      "privacy_review": "manual_review_required",
+      "sample_id": "P01",
+      "sha256": "811c298e5b0690a083c81326f0a2afb31f96411835588ccff9df8983507b5b93",
+      "size_bytes": 17682,
+      "size_kib": 17.268,
+      "target_kib": 10,
+      "validation": {
+        "eof_marker": "valid",
+        "page_count": 1,
+        "signature": "valid",
+        "status": "valid",
+        "text_extractable": true
+      }
+    },
+    {
+      "characteristic": "Dokumen teks 2-3 halaman",
+      "difference_bytes": -1009,
+      "filename": "P02.pdf",
+      "page_count": 3,
+      "privacy_review": "manual_review_required",
+      "sample_id": "P02",
+      "sha256": "1e89e650573291ca562e8ae5dff68cf49821f2e2edff219cde741cfb0027c2d5",
+      "size_bytes": 24591,
+      "size_kib": 24.015,
+      "target_kib": 25,
+      "validation": {
+        "eof_marker": "valid",
+        "page_count": 3,
+        "signature": "valid",
+        "status": "valid",
+        "text_extractable": true
+      }
+    },
+    {
+      "characteristic": "Laporan dengan tabel",
+      "difference_bytes": -2658,
+      "filename": "P03.pdf",
+      "page_count": 12,
+      "privacy_review": "manual_review_required",
+      "sample_id": "P03",
+      "sha256": "17ab946bfb77928f43e81ea1295915af36703336e50d30bc1a718698affbba01",
+      "size_bytes": 48542,
+      "size_kib": 47.404,
+      "target_kib": 50,
+      "validation": {
+        "eof_marker": "valid",
+        "page_count": 12,
+        "signature": "valid",
+        "status": "valid",
+        "text_extractable": true
+      }
+    },
+    {
+      "characteristic": "Makalah dengan grafik vektor",
+      "difference_bytes": -3078,
+      "filename": "P04.pdf",
+      "page_count": 5,
+      "privacy_review": "manual_review_required",
+      "sample_id": "P04",
+      "sha256": "8b9bcd039fb1ac82b8e890ce97e2061c41df2cad2592e8aae576bee5b6bcd3e6",
+      "size_bytes": 99322,
+      "size_kib": 96.994,
+      "target_kib": 100,
+      "validation": {
+        "eof_marker": "valid",
+        "page_count": 5,
+        "signature": "valid",
+        "status": "valid",
+        "text_extractable": true
+      }
+    },
+    {
+      "characteristic": "Dokumen dengan bitmap kecil",
+      "difference_bytes": 25086,
+      "filename": "P05.pdf",
+      "page_count": 5,
+      "privacy_review": "manual_review_required",
+      "sample_id": "P05",
+      "sha256": "1faf7c560af8275a3320ee8b7eb6c0e445913df00112ff931a6b5f6303678037",
+      "size_bytes": 178686,
+      "size_kib": 174.498,
+      "target_kib": 150,
+      "validation": {
+        "eof_marker": "valid",
+        "page_count": 5,
+        "signature": "valid",
+        "status": "valid",
+        "text_extractable": true
+      }
+    },
+    {
+      "characteristic": "Modul/diktat bergambar",
+      "difference_bytes": 7734,
+      "filename": "P06.pdf",
+      "page_count": 6,
+      "privacy_review": "manual_review_required",
+      "sample_id": "P06",
+      "sha256": "61c87903cf20cffb3fb9d2f1ed4690c7994a46cc98596825f1e703275e228085",
+      "size_bytes": 212534,
+      "size_kib": 207.553,
+      "target_kib": 200,
+      "validation": {
+        "eof_marker": "valid",
+        "page_count": 6,
+        "signature": "valid",
+        "status": "valid",
+        "text_extractable": true
+      }
+    },
+    {
+      "characteristic": "Laporan dengan grafik dan tabel",
+      "difference_bytes": -36080,
+      "filename": "P07.pdf",
+      "page_count": 7,
+      "privacy_review": "manual_review_required",
+      "sample_id": "P07",
+      "sha256": "47d3d89dc8a7d906944d56cc23f7df757721439db1c7264144726ebd9a6adaa9",
+      "size_bytes": 271120,
+      "size_kib": 264.766,
+      "target_kib": 300,
+      "validation": {
+        "eof_marker": "valid",
+        "page_count": 7,
+        "signature": "valid",
+        "status": "valid",
+        "text_extractable": true
+      }
+    },
+    {
+      "characteristic": "Dokumen pindai beresolusi rendah",
+      "difference_bytes": -52346,
+      "filename": "P08.pdf",
+      "page_count": 4,
+      "privacy_review": "manual_review_required",
+      "sample_id": "P08",
+      "sha256": "8318751207692c916d52961b4651170834aadf3e103e90aae3ddfe366af52870",
+      "size_bytes": 357254,
+      "size_kib": 348.881,
+      "target_kib": 400,
+      "validation": {
+        "eof_marker": "valid",
+        "page_count": 4,
+        "signature": "valid",
+        "status": "valid",
+        "text_extractable": false
+      }
+    },
+    {
+      "characteristic": "Dokumen teks dan foto",
+      "difference_bytes": -35662,
+      "filename": "P09.pdf",
+      "page_count": 6,
+      "privacy_review": "manual_review_required",
+      "sample_id": "P09",
+      "sha256": "b85b4d0c753b5741b5426cb5ddd8d41c65b9c4b8e06cd8963d792ca53668f96c",
+      "size_bytes": 476338,
+      "size_kib": 465.174,
+      "target_kib": 500,
+      "validation": {
+        "eof_marker": "valid",
+        "page_count": 6,
+        "signature": "valid",
+        "status": "valid",
+        "text_extractable": true
+      }
+    },
+    {
+      "characteristic": "Dokumen pindai beberapa halaman",
+      "difference_bytes": -77067,
+      "filename": "P10.pdf",
+      "page_count": 6,
+      "privacy_review": "manual_review_required",
+      "sample_id": "P10",
+      "sha256": "c2df6c75202365160a8667ca29438421175fabe383f1293e01a8e00408b10f28",
+      "size_bytes": 537333,
+      "size_kib": 524.739,
+      "target_kib": 600,
+      "validation": {
+        "eof_marker": "valid",
+        "page_count": 6,
+        "signature": "valid",
+        "status": "valid",
+        "text_extractable": false
+      }
+    }
+  ],
+  "privacy_review": {
+    "note": "Generator tidak menyatakan tinjauan privasi lulus; setiap PDF perlu diperiksa manusia.",
+    "status": "manual_review_required"
+  },
+  "report_version": 1,
+  "seed": 20261118
+}

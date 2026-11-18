@@ -6,7 +6,7 @@ import io
 import json
 import random
 import tempfile
-from dataclasses import asdict, dataclass
+from dataclasses import dataclass
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Iterable
@@ -17,7 +17,6 @@ from reportlab.lib import colors
 from reportlab.lib.pagesizes import A4
 from reportlab.lib.utils import ImageReader
 from reportlab.lib.styles import ParagraphStyle
-from reportlab.pdfbase.pdfmetrics import stringWidth
 from reportlab.pdfgen import canvas
 from reportlab.platypus import Paragraph
 
@@ -145,7 +144,7 @@ def _draw_vector_chart(pdf: canvas.Canvas, rng: random.Random, x: float, top: fl
     pdf.roundRect(x, bottom, width, height, 5, fill=1, stroke=0)
     pdf.setStrokeColor(colors.HexColor("#c7d2dc"))
     pdf.setLineWidth(0.35)
-    for i in range(5):
+    for i in range(4):
         y = bottom + 20 + i * (height - 40) / 4
         pdf.line(x + 28, y, x + width - 8, y)
     pdf.setFillColor(colors.HexColor("#30465c"))
@@ -193,7 +192,7 @@ def _image_bytes(rng: random.Random, size: tuple[int, int], mode: str) -> bytes:
             x1, y1 = rng.randrange(width), rng.randrange(height)
             color = (rng.randrange(35, 180), rng.randrange(65, 190), rng.randrange(80, 210))
             draw.line((x0, y0, x1, y1), fill=color, width=rng.randrange(1, 4))
-        for i in range(8):
+        for i in range(4):
             x, y = rng.randrange(width), rng.randrange(height)
             r = rng.randrange(5, max(6, min(width, height) // 8))
             draw.ellipse((x-r, y-r, x+r, y+r), outline="#315b73", width=2)
@@ -214,11 +213,24 @@ def _scan_bytes(rng: random.Random, page: int, spec: PdfSpec) -> bytes:
     draw.text((60, 83), f"Lembar simulasi {page:02d} | salinan sintetis", fill="#4b5661", font=font)
     draw.line((60, 118, 790, 118), fill="#87929d", width=2)
     y = 150
-    for i in range(8):
+    for i in range(4):
         text = _fictional_paragraph(rng, page * 31 + i)
-        draw.text((62, y), text[:88], fill="#38424a", font=font)
-        y += 80
-        if i in {2, 5}:
+        lines: list[str] = []
+        current = ""
+        for word in text.split():
+            candidate = f"{current} {word}".strip()
+            if current and draw.textlength(candidate, font=font) > 720:
+                lines.append(current)
+                current = word
+            else:
+                current = candidate
+        if current:
+            lines.append(current)
+        for line in lines:
+            draw.text((62, y), line, fill="#38424a", font=font)
+            y += 22
+        y += 28
+        if i == 2:
             draw.line((75, y, 760, y), fill="#adb4ba", width=1)
             y += 14
     for row in range(6):
@@ -376,7 +388,7 @@ def generate_dataset(output_dir: Path, report_path: Path, *, force: bool = False
     output_dir.mkdir(parents=True, exist_ok=True)
     report_path.parent.mkdir(parents=True, exist_ok=True)
     rows: list[dict[str, object]] = []
-    with tempfile.TemporaryDirectory(prefix="cipherstego-pdf-") as scratch:
+    with tempfile.TemporaryDirectory(prefix=".cipherstego-pdf-", dir=output_dir) as scratch:
         scratch_dir = Path(scratch)
         for spec in SPECS:
             final_path = output_dir / f"{spec.sample_id}.pdf"
@@ -439,6 +451,12 @@ def main(argv: Iterable[str] | None = None) -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
+
+
+
+
+
+
 
 
 

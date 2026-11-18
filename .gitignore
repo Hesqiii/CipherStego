@@ -63,3 +63,5 @@ desktop.ini
 
 # Temporary Audit & Screenshot artifacts
 .ui-audit-*.png
+tmp/
+temp/
