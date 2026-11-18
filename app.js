@@ -115,30 +115,22 @@ function showView(name) {
     view.hidden = !active;
     view.classList.toggle("active", active);
   });
-  $$(".nav-link").forEach((button) => {
+  $$(".sidebar-link").forEach((button) => {
     const active = button.dataset.view === name;
     button.classList.toggle("active", active);
     if (active) button.setAttribute("aria-current", "page");
     else button.removeAttribute("aria-current");
   });
-  $("#sidebar").classList.remove("open");
-  $("#menu-toggle").setAttribute("aria-expanded", "false");
 }
 
-$("#menu-toggle").addEventListener("click", (event) => {
-  const open = $("#sidebar").classList.toggle("open");
-  event.currentTarget.setAttribute("aria-expanded", String(open));
-});
-
-$("#brand-home").addEventListener("click", () => showView("embed"));
-
-$$(".nav-link").forEach((button) => button.addEventListener("click", () => showView(button.dataset.view)));
+$$(".sidebar-link").forEach((button) => button.addEventListener("click", () => showView(button.dataset.view)));
 
 $$('[data-toggle-password]').forEach((button) => button.addEventListener("click", () => {
   const input = document.getElementById(button.dataset.togglePassword);
   const visible = input.type === "password";
   input.type = visible ? "text" : "password";
-  button.textContent = visible ? "Sembunyikan" : "Tampilkan";
+  button.setAttribute("aria-pressed", String(visible));
+  button.setAttribute("aria-label", visible ? "Sembunyikan passphrase" : "Tampilkan passphrase");
 }));
 
 $("#embed-pdf").addEventListener("change", (event) => {
