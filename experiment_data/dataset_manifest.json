@@ -1,38 +1,47 @@
 {
   "covers": [
     {
-      "color_mode": null,
-      "dimensions": null,
-      "filename": null,
-      "reason": "Berkas dengan kode C1 belum tersedia.",
+      "color_mode": "RGB",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "filename": "C1.png",
+      "reason": null,
       "sample_id": "C1",
-      "sha256": null,
-      "size_bytes": null,
-      "status": "missing"
+      "sha256": "610f3e80be37c00e82c7e4f38a6cf208d80e281132ce354c48e7dbe3338b57dc",
+      "size_bytes": 4687317,
+      "status": "valid"
     },
     {
-      "color_mode": null,
-      "dimensions": null,
-      "filename": null,
-      "reason": "Berkas dengan kode C2 belum tersedia.",
+      "color_mode": "RGB",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "filename": "C2.png",
+      "reason": null,
       "sample_id": "C2",
-      "sha256": null,
-      "size_bytes": null,
-      "status": "missing"
+      "sha256": "1a0259b754813be7da92e2bd65dc1603d6c9eabd44b75d7071aee074b75943bb",
+      "size_bytes": 4140303,
+      "status": "valid"
     },
     {
-      "color_mode": null,
-      "dimensions": null,
-      "filename": null,
-      "reason": "Berkas dengan kode C3 belum tersedia.",
+      "color_mode": "RGB",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "filename": "C3.png",
+      "reason": null,
       "sample_id": "C3",
-      "sha256": null,
-      "size_bytes": null,
-      "status": "missing"
+      "sha256": "333a17c83c37f8edd1fb92a9a94944a06350088aba752b586e54faab3f9fb0a3",
+      "size_bytes": 8787,
+      "status": "valid"
     }
   ],
-  "created_utc": "2026-11-18T15:10:27.685765+00:00",
-  "dataset_format_valid": false,
+  "created_utc": "2026-11-19T05:01:50.751774+00:00",
+  "dataset_format_valid": true,
   "dataset_root": "dataset",
   "excluded_non_dataset_files": [
     {
@@ -58,14 +67,7 @@
     }
   ],
   "invalid_cover_ids": [],
-  "invalid_payload_ids": [],
-  "manifest_version": 1,
-  "missing_cover_ids": [
-    "C1",
-    "C2",
-    "C3"
-  ],
-  "missing_payload_ids": [
+  "invalid_payload_ids": [
     "P01",
     "P02",
     "P03",
@@ -77,125 +79,128 @@
     "P09",
     "P10"
   ],
+  "manifest_version": 1,
+  "missing_cover_ids": [],
+  "missing_payload_ids": [],
   "payloads": [
     {
       "color_mode": null,
       "dimensions": null,
-      "filename": null,
+      "filename": "P01.pdf",
       "privacy_review": "manual_review_required",
-      "reason": "Berkas dengan kode P01 belum tersedia.",
+      "reason": null,
       "sample_id": "P01",
-      "sha256": null,
-      "size_bytes": null,
-      "status": "missing"
+      "sha256": "811c298e5b0690a083c81326f0a2afb31f96411835588ccff9df8983507b5b93",
+      "size_bytes": 17682,
+      "status": "valid"
     },
     {
       "color_mode": null,
       "dimensions": null,
-      "filename": null,
+      "filename": "P02.pdf",
       "privacy_review": "manual_review_required",
-      "reason": "Berkas dengan kode P02 belum tersedia.",
+      "reason": null,
       "sample_id": "P02",
-      "sha256": null,
-      "size_bytes": null,
-      "status": "missing"
+      "sha256": "15277b00e60a7570d003bf03ee948d07bab25d14a662c3236f2034949025186f",
+      "size_bytes": 24562,
+      "status": "valid"
     },
     {
       "color_mode": null,
       "dimensions": null,
-      "filename": null,
+      "filename": "P03.pdf",
       "privacy_review": "manual_review_required",
-      "reason": "Berkas dengan kode P03 belum tersedia.",
+      "reason": null,
       "sample_id": "P03",
-      "sha256": null,
-      "size_bytes": null,
-      "status": "missing"
+      "sha256": "17ab946bfb77928f43e81ea1295915af36703336e50d30bc1a718698affbba01",
+      "size_bytes": 48542,
+      "status": "valid"
     },
     {
       "color_mode": null,
       "dimensions": null,
-      "filename": null,
+      "filename": "P04.pdf",
       "privacy_review": "manual_review_required",
-      "reason": "Berkas dengan kode P04 belum tersedia.",
+      "reason": null,
       "sample_id": "P04",
-      "sha256": null,
-      "size_bytes": null,
-      "status": "missing"
+      "sha256": "d828a21322243982b2c3bf9615e60c2ac9a1e9ef8fadcc1bb2c32d1bc322225d",
+      "size_bytes": 99211,
+      "status": "valid"
     },
     {
       "color_mode": null,
       "dimensions": null,
-      "filename": null,
+      "filename": "P05.pdf",
       "privacy_review": "manual_review_required",
-      "reason": "Berkas dengan kode P05 belum tersedia.",
+      "reason": null,
       "sample_id": "P05",
-      "sha256": null,
-      "size_bytes": null,
-      "status": "missing"
+      "sha256": "c2e2e6e43e61146b62a3df9c96cbb75d7d4901ae9ba0a269c33e80a83d748573",
+      "size_bytes": 158372,
+      "status": "valid"
     },
     {
       "color_mode": null,
       "dimensions": null,
-      "filename": null,
+      "filename": "P06.pdf",
       "privacy_review": "manual_review_required",
-      "reason": "Berkas dengan kode P06 belum tersedia.",
+      "reason": null,
       "sample_id": "P06",
-      "sha256": null,
-      "size_bytes": null,
-      "status": "missing"
+      "sha256": "685518270623a24cb64c0f5ca1eeb25c7cc96a0f0d5fd8d5d18f4d2c7b0d6779",
+      "size_bytes": 209125,
+      "status": "valid"
     },
     {
       "color_mode": null,
       "dimensions": null,
-      "filename": null,
+      "filename": "P07.pdf",
       "privacy_review": "manual_review_required",
-      "reason": "Berkas dengan kode P07 belum tersedia.",
+      "reason": null,
       "sample_id": "P07",
-      "sha256": null,
-      "size_bytes": null,
-      "status": "missing"
+      "sha256": "4a1703e7540739be513b7ca007c4ff407cf95ada8c8d9405864e30bdd3b2e887",
+      "size_bytes": 270897,
+      "status": "valid"
     },
     {
       "color_mode": null,
       "dimensions": null,
-      "filename": null,
+      "filename": "P08.pdf",
       "privacy_review": "manual_review_required",
-      "reason": "Berkas dengan kode P08 belum tersedia.",
+      "reason": null,
       "sample_id": "P08",
-      "sha256": null,
-      "size_bytes": null,
-      "status": "missing"
+      "sha256": "df0560639e6e08c82c04f0e5f80a5763bbb93960f4762c82fdd391e1686ca924",
+      "size_bytes": 367822,
+      "status": "valid"
     },
     {
       "color_mode": null,
       "dimensions": null,
-      "filename": null,
+      "filename": "P09.pdf",
       "privacy_review": "manual_review_required",
-      "reason": "Berkas dengan kode P09 belum tersedia.",
+      "reason": null,
       "sample_id": "P09",
-      "sha256": null,
-      "size_bytes": null,
-      "status": "missing"
+      "sha256": "b85b4d0c753b5741b5426cb5ddd8d41c65b9c4b8e06cd8963d792ca53668f96c",
+      "size_bytes": 476338,
+      "status": "valid"
     },
     {
       "color_mode": null,
       "dimensions": null,
-      "filename": null,
+      "filename": "P10.pdf",
       "privacy_review": "manual_review_required",
-      "reason": "Berkas dengan kode P10 belum tersedia.",
+      "reason": null,
       "sample_id": "P10",
-      "sha256": null,
-      "size_bytes": null,
-      "status": "missing"
+      "sha256": "648075fdc32bacc0727ce65194c22f5a3bc8fa40b98f86760517366962d5a930",
+      "size_bytes": 550960,
+      "status": "valid"
     }
   ],
   "privacy_review": {
-    "dataset_fingerprint": "130a6a81426aa3aade8bfe2e6e811fbe92a911101bec99bce1a6190cd2841522",
+    "dataset_fingerprint": "008e8cdbe2fce9dbdfae9417ace3e6650a38f1f84a8681e477cb1b9e826d8661",
     "note": "Automated checks cannot establish that PDF contents contain no personal or sensitive data.",
     "review_file": "privacy_review.json",
-    "status": "required_manual_attestation"
+    "status": "reviewed"
   },
-  "ready_for_pilot": false,
+  "ready_for_pilot": true,
   "requirements": {
     "covers": {
       "count": 3,

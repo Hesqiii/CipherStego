@@ -1,0 +1,878 @@
+{
+  "audit_version": 1,
+  "capacity_basis": "ratio = 8 * (actual PDF bytes + 32-byte header + 16-byte AES-GCM tag) / (1920 * 1080 * 3) bits * 100",
+  "created_utc": "2026-11-18T16:04:35.377053+00:00",
+  "dataset_checks": {
+    "all_files_within_runner_10_to_600_kib_bounds": true,
+    "all_pdfs_open_and_render_all_pages": true,
+    "exactly_p01_to_p10_present": true,
+    "generation_report_matches_actual_size_hash_pages_and_characteristic": true,
+    "manifest_sha256_at_audit_time": "eed1a25588b043754d6931ec38d264fdec9a908229c1ff3d811d512895d08f09",
+    "p08_p10_are_850x1202_full_page_raster_images": true,
+    "privacy_review": "manual_review_required",
+    "runner_manifest_modified": false,
+    "runner_manifest_snapshot": {
+      "missing_payload_ids_in_manifest": [
+        "P01",
+        "P02",
+        "P03",
+        "P04",
+        "P05",
+        "P06",
+        "P07",
+        "P08",
+        "P09",
+        "P10"
+      ],
+      "note": "The runner manifest was intentionally not overwritten; it still reflects the earlier pre-generation dataset state. Refresh it only through a later, separately authorized preflight after manual privacy review.",
+      "privacy_review_status": "required_manual_attestation",
+      "ready_for_pilot": false,
+      "status": "stale_pre_generation_manifest_left_unchanged"
+    }
+  },
+  "paths": {
+    "generation_report": "experiment_data/reports/pdf_generation_report.json",
+    "payload_directory": "experiment_data/dataset/pdf",
+    "runner_manifest": "experiment_data/dataset_manifest.json"
+  },
+  "pdfs": [
+    {
+      "capacity_calculation": {
+        "capacity_ratio_percent": 2.2801,
+        "cover_dimensions": [
+          1920,
+          1080
+        ],
+        "cover_rgb_capacity_bits": 6220800,
+        "gcm_tag_bytes": 16,
+        "header_bytes": 32,
+        "pdf_bytes": 17682,
+        "total_embedded_bytes": 17730
+      },
+      "characteristic": "Surat satu halaman",
+      "difference_from_target_bytes": 7442,
+      "fictitious_content_check": {
+        "basis": "generator source uses fictional templates; extracted text and metadata contain no detected email, 11+ digit identifier, or local path",
+        "email_addresses_found": 0,
+        "long_digit_sequences_found": 0,
+        "status": "no personal-data patterns found"
+      },
+      "filename": "P01.pdf",
+      "local_path_in_metadata_or_extracted_text": false,
+      "metadata": {
+        "author": "Data sintetis",
+        "creation_date": "2000-01-01T00:00:00+00:00",
+        "creator": "CipherStego synthetic dataset generator",
+        "modification_date": "2000-01-01T00:00:00+00:00",
+        "producer": "ReportLab PDF Library - (opensource)",
+        "subject": "Konten fiktif untuk pengujian lokal",
+        "title": "P01 - Dokumen sintetis"
+      },
+      "page_count": 1,
+      "page_image_objects": [
+        [
+          {
+            "bits_per_component": 8,
+            "color_space": "/DeviceRGB",
+            "filter": "['/ASCII85Decode', '/DCTDecode']",
+            "height": 210,
+            "name": "/FormXob.638fae7a709677fc80153891b16aacf0",
+            "width": 280
+          }
+        ]
+      ],
+      "pdf_validation": "valid; pypdf strict-open, PDF signature/EOF, unencrypted",
+      "privacy_review": "manual_review_required",
+      "render_validation": {
+        "rendered_page_count": 1,
+        "rendered_pngs_opened": true,
+        "status": "valid"
+      },
+      "sample_id": "P01",
+      "scan_as_full_page_low_resolution_raster": true,
+      "sha256": "811c298e5b0690a083c81326f0a2afb31f96411835588ccff9df8983507b5b93",
+      "size_bytes": 17682,
+      "size_kib": 17.268,
+      "target_kib": 10
+    },
+    {
+      "capacity_calculation": {
+        "capacity_ratio_percent": 3.1649,
+        "cover_dimensions": [
+          1920,
+          1080
+        ],
+        "cover_rgb_capacity_bits": 6220800,
+        "gcm_tag_bytes": 16,
+        "header_bytes": 32,
+        "pdf_bytes": 24562,
+        "total_embedded_bytes": 24610
+      },
+      "characteristic": "Dokumen teks 2-3 halaman",
+      "difference_from_target_bytes": -1038,
+      "fictitious_content_check": {
+        "basis": "generator source uses fictional templates; extracted text and metadata contain no detected email, 11+ digit identifier, or local path",
+        "email_addresses_found": 0,
+        "long_digit_sequences_found": 0,
+        "status": "no personal-data patterns found"
+      },
+      "filename": "P02.pdf",
+      "local_path_in_metadata_or_extracted_text": false,
+      "metadata": {
+        "author": "Data sintetis",
+        "creation_date": "2000-01-01T00:00:00+00:00",
+        "creator": "CipherStego synthetic dataset generator",
+        "modification_date": "2000-01-01T00:00:00+00:00",
+        "producer": "ReportLab PDF Library - (opensource)",
+        "subject": "Konten fiktif untuk pengujian lokal",
+        "title": "P02 - Dokumen sintetis"
+      },
+      "page_count": 3,
+      "page_image_objects": [
+        [],
+        [],
+        []
+      ],
+      "pdf_validation": "valid; pypdf strict-open, PDF signature/EOF, unencrypted",
+      "privacy_review": "manual_review_required",
+      "render_validation": {
+        "rendered_page_count": 3,
+        "rendered_pngs_opened": true,
+        "status": "valid"
+      },
+      "sample_id": "P02",
+      "scan_as_full_page_low_resolution_raster": true,
+      "sha256": "15277b00e60a7570d003bf03ee948d07bab25d14a662c3236f2034949025186f",
+      "size_bytes": 24562,
+      "size_kib": 23.986,
+      "target_kib": 25
+    },
+    {
+      "capacity_calculation": {
+        "capacity_ratio_percent": 6.2487,
+        "cover_dimensions": [
+          1920,
+          1080
+        ],
+        "cover_rgb_capacity_bits": 6220800,
+        "gcm_tag_bytes": 16,
+        "header_bytes": 32,
+        "pdf_bytes": 48542,
+        "total_embedded_bytes": 48590
+      },
+      "characteristic": "Laporan dengan tabel",
+      "difference_from_target_bytes": -2658,
+      "fictitious_content_check": {
+        "basis": "generator source uses fictional templates; extracted text and metadata contain no detected email, 11+ digit identifier, or local path",
+        "email_addresses_found": 0,
+        "long_digit_sequences_found": 0,
+        "status": "no personal-data patterns found"
+      },
+      "filename": "P03.pdf",
+      "local_path_in_metadata_or_extracted_text": false,
+      "metadata": {
+        "author": "Data sintetis",
+        "creation_date": "2000-01-01T00:00:00+00:00",
+        "creator": "CipherStego synthetic dataset generator",
+        "modification_date": "2000-01-01T00:00:00+00:00",
+        "producer": "ReportLab PDF Library - (opensource)",
+        "subject": "Konten fiktif untuk pengujian lokal",
+        "title": "P03 - Dokumen sintetis"
+      },
+      "page_count": 12,
+      "page_image_objects": [
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
+      ],
+      "pdf_validation": "valid; pypdf strict-open, PDF signature/EOF, unencrypted",
+      "privacy_review": "manual_review_required",
+      "render_validation": {
+        "rendered_page_count": 12,
+        "rendered_pngs_opened": true,
+        "status": "valid"
+      },
+      "sample_id": "P03",
+      "scan_as_full_page_low_resolution_raster": true,
+      "sha256": "17ab946bfb77928f43e81ea1295915af36703336e50d30bc1a718698affbba01",
+      "size_bytes": 48542,
+      "size_kib": 47.404,
+      "target_kib": 50
+    },
+    {
+      "capacity_calculation": {
+        "capacity_ratio_percent": 12.7648,
+        "cover_dimensions": [
+          1920,
+          1080
+        ],
+        "cover_rgb_capacity_bits": 6220800,
+        "gcm_tag_bytes": 16,
+        "header_bytes": 32,
+        "pdf_bytes": 99211,
+        "total_embedded_bytes": 99259
+      },
+      "characteristic": "Makalah dengan grafik vektor",
+      "difference_from_target_bytes": -3189,
+      "fictitious_content_check": {
+        "basis": "generator source uses fictional templates; extracted text and metadata contain no detected email, 11+ digit identifier, or local path",
+        "email_addresses_found": 0,
+        "long_digit_sequences_found": 0,
+        "status": "no personal-data patterns found"
+      },
+      "filename": "P04.pdf",
+      "local_path_in_metadata_or_extracted_text": false,
+      "metadata": {
+        "author": "Data sintetis",
+        "creation_date": "2000-01-01T00:00:00+00:00",
+        "creator": "CipherStego synthetic dataset generator",
+        "modification_date": "2000-01-01T00:00:00+00:00",
+        "producer": "ReportLab PDF Library - (opensource)",
+        "subject": "Konten fiktif untuk pengujian lokal",
+        "title": "P04 - Dokumen sintetis"
+      },
+      "page_count": 5,
+      "page_image_objects": [
+        [],
+        [],
+        [],
+        [],
+        []
+      ],
+      "pdf_validation": "valid; pypdf strict-open, PDF signature/EOF, unencrypted",
+      "privacy_review": "manual_review_required",
+      "render_validation": {
+        "rendered_page_count": 5,
+        "rendered_pngs_opened": true,
+        "status": "valid"
+      },
+      "sample_id": "P04",
+      "scan_as_full_page_low_resolution_raster": true,
+      "sha256": "d828a21322243982b2c3bf9615e60c2ac9a1e9ef8fadcc1bb2c32d1bc322225d",
+      "size_bytes": 99211,
+      "size_kib": 96.886,
+      "target_kib": 100
+    },
+    {
+      "capacity_calculation": {
+        "capacity_ratio_percent": 20.3729,
+        "cover_dimensions": [
+          1920,
+          1080
+        ],
+        "cover_rgb_capacity_bits": 6220800,
+        "gcm_tag_bytes": 16,
+        "header_bytes": 32,
+        "pdf_bytes": 158372,
+        "total_embedded_bytes": 158420
+      },
+      "characteristic": "Dokumen dengan bitmap kecil",
+      "difference_from_target_bytes": 4772,
+      "fictitious_content_check": {
+        "basis": "generator source uses fictional templates; extracted text and metadata contain no detected email, 11+ digit identifier, or local path",
+        "email_addresses_found": 0,
+        "long_digit_sequences_found": 0,
+        "status": "no personal-data patterns found"
+      },
+      "filename": "P05.pdf",
+      "local_path_in_metadata_or_extracted_text": false,
+      "metadata": {
+        "author": "Data sintetis",
+        "creation_date": "2000-01-01T00:00:00+00:00",
+        "creator": "CipherStego synthetic dataset generator",
+        "modification_date": "2000-01-01T00:00:00+00:00",
+        "producer": "ReportLab PDF Library - (opensource)",
+        "subject": "Konten fiktif untuk pengujian lokal",
+        "title": "P05 - Dokumen sintetis"
+      },
+      "page_count": 5,
+      "page_image_objects": [
+        [
+          {
+            "bits_per_component": 8,
+            "color_space": "/DeviceRGB",
+            "filter": "['/ASCII85Decode', '/DCTDecode']",
+            "height": 300,
+            "name": "/FormXob.0929dbde3bd21a9305aab4072e56aa45",
+            "width": 430
+          },
+          {
+            "bits_per_component": 8,
+            "color_space": "/DeviceRGB",
+            "filter": "['/ASCII85Decode', '/DCTDecode']",
+            "height": 210,
+            "name": "/FormXob.b7de9ea145d04fef236de3980a3f6834",
+            "width": 300
+          }
+        ],
+        [
+          {
+            "bits_per_component": 8,
+            "color_space": "/DeviceRGB",
+            "filter": "['/ASCII85Decode', '/DCTDecode']",
+            "height": 210,
+            "name": "/FormXob.014ecbbe3016e6a0867f4f9d7129394a",
+            "width": 300
+          },
+          {
+            "bits_per_component": 8,
+            "color_space": "/DeviceRGB",
+            "filter": "['/ASCII85Decode', '/DCTDecode']",
+            "height": 300,
+            "name": "/FormXob.5f903c16f0e491293a25cd6aaec088ec",
+            "width": 430
+          }
+        ],
+        [
+          {
+            "bits_per_component": 8,
+            "color_space": "/DeviceRGB",
+            "filter": "['/ASCII85Decode', '/DCTDecode']",
+            "height": 210,
+            "name": "/FormXob.30782aff365fc1720f398203e3056cfe",
+            "width": 300
+          },
+          {
+            "bits_per_component": 8,
+            "color_space": "/DeviceRGB",
+            "filter": "['/ASCII85Decode', '/DCTDecode']",
+            "height": 300,
+            "name": "/FormXob.ab3faccfa57a15ec97fda685fbc82e68",
+            "width": 430
+          }
+        ],
+        [
+          {
+            "bits_per_component": 8,
+            "color_space": "/DeviceRGB",
+            "filter": "['/ASCII85Decode', '/DCTDecode']",
+            "height": 210,
+            "name": "/FormXob.0f357bc59636080193d118d689f2215f",
+            "width": 300
+          },
+          {
+            "bits_per_component": 8,
+            "color_space": "/DeviceRGB",
+            "filter": "['/ASCII85Decode', '/DCTDecode']",
+            "height": 300,
+            "name": "/FormXob.5f903c16f0e491293a25cd6aaec088ec",
+            "width": 430
+          }
+        ],
+        [
+          {
+            "bits_per_component": 8,
+            "color_space": "/DeviceRGB",
+            "filter": "['/ASCII85Decode', '/DCTDecode']",
+            "height": 300,
+            "name": "/FormXob.4f7af5581c13adc5fe560e88514aaf09",
+            "width": 430
+          },
+          {
+            "bits_per_component": 8,
+            "color_space": "/DeviceRGB",
+            "filter": "['/ASCII85Decode', '/DCTDecode']",
+            "height": 210,
+            "name": "/FormXob.df8d201679b1f11f3d5716d23211ef2d",
+            "width": 300
+          }
+        ]
+      ],
+      "pdf_validation": "valid; pypdf strict-open, PDF signature/EOF, unencrypted",
+      "privacy_review": "manual_review_required",
+      "render_validation": {
+        "rendered_page_count": 5,
+        "rendered_pngs_opened": true,
+        "status": "valid"
+      },
+      "sample_id": "P05",
+      "scan_as_full_page_low_resolution_raster": true,
+      "sha256": "c2e2e6e43e61146b62a3df9c96cbb75d7d4901ae9ba0a269c33e80a83d748573",
+      "size_bytes": 158372,
+      "size_kib": 154.66,
+      "target_kib": 150
+    },
+    {
+      "capacity_calculation": {
+        "capacity_ratio_percent": 26.8998,
+        "cover_dimensions": [
+          1920,
+          1080
+        ],
+        "cover_rgb_capacity_bits": 6220800,
+        "gcm_tag_bytes": 16,
+        "header_bytes": 32,
+        "pdf_bytes": 209125,
+        "total_embedded_bytes": 209173
+      },
+      "characteristic": "Modul/diktat bergambar",
+      "difference_from_target_bytes": 4325,
+      "fictitious_content_check": {
+        "basis": "generator source uses fictional templates; extracted text and metadata contain no detected email, 11+ digit identifier, or local path",
+        "email_addresses_found": 0,
+        "long_digit_sequences_found": 0,
+        "status": "no personal-data patterns found"
+      },
+      "filename": "P06.pdf",
+      "local_path_in_metadata_or_extracted_text": false,
+      "metadata": {
+        "author": "Data sintetis",
+        "creation_date": "2000-01-01T00:00:00+00:00",
+        "creator": "CipherStego synthetic dataset generator",
+        "modification_date": "2000-01-01T00:00:00+00:00",
+        "producer": "ReportLab PDF Library - (opensource)",
+        "subject": "Konten fiktif untuk pengujian lokal",
+        "title": "P06 - Dokumen sintetis"
+      },
+      "page_count": 6,
+      "page_image_objects": [
+        [
+          {
+            "bits_per_component": 8,
+            "color_space": "/DeviceRGB",
+            "filter": "['/ASCII85Decode', '/DCTDecode']",
+            "height": 420,
+            "name": "/FormXob.1ed8d361243ef65da85517639a7e5358",
+            "width": 600
+          }
+        ],
+        [
+          {
+            "bits_per_component": 8,
+            "color_space": "/DeviceRGB",
+            "filter": "['/ASCII85Decode', '/DCTDecode']",
+            "height": 420,
+            "name": "/FormXob.546cc983c21b60a4125b61368feeaacb",
+            "width": 600
+          }
+        ],
+        [
+          {
+            "bits_per_component": 8,
+            "color_space": "/DeviceRGB",
+            "filter": "['/ASCII85Decode', '/DCTDecode']",
+            "height": 420,
+            "name": "/FormXob.d05df187621a03d1bc1ecd808daf626b",
+            "width": 600
+          }
+        ],
+        [
+          {
+            "bits_per_component": 8,
+            "color_space": "/DeviceRGB",
+            "filter": "['/ASCII85Decode', '/DCTDecode']",
+            "height": 420,
+            "name": "/FormXob.5169172d6c19245f85ce05b6d7103277",
+            "width": 600
+          }
+        ],
+        [
+          {
+            "bits_per_component": 8,
+            "color_space": "/DeviceRGB",
+            "filter": "['/ASCII85Decode', '/DCTDecode']",
+            "height": 420,
+            "name": "/FormXob.e3d483769dc1612c6fb16adff2f16058",
+            "width": 600
+          }
+        ],
+        [
+          {
+            "bits_per_component": 8,
+            "color_space": "/DeviceRGB",
+            "filter": "['/ASCII85Decode', '/DCTDecode']",
+            "height": 420,
+            "name": "/FormXob.4191126655292e00eb83043ea2b841ad",
+            "width": 600
+          }
+        ]
+      ],
+      "pdf_validation": "valid; pypdf strict-open, PDF signature/EOF, unencrypted",
+      "privacy_review": "manual_review_required",
+      "render_validation": {
+        "rendered_page_count": 6,
+        "rendered_pngs_opened": true,
+        "status": "valid"
+      },
+      "sample_id": "P06",
+      "scan_as_full_page_low_resolution_raster": true,
+      "sha256": "685518270623a24cb64c0f5ca1eeb25c7cc96a0f0d5fd8d5d18f4d2c7b0d6779",
+      "size_bytes": 209125,
+      "size_kib": 204.224,
+      "target_kib": 200
+    },
+    {
+      "capacity_calculation": {
+        "capacity_ratio_percent": 34.8438,
+        "cover_dimensions": [
+          1920,
+          1080
+        ],
+        "cover_rgb_capacity_bits": 6220800,
+        "gcm_tag_bytes": 16,
+        "header_bytes": 32,
+        "pdf_bytes": 270897,
+        "total_embedded_bytes": 270945
+      },
+      "characteristic": "Laporan dengan grafik dan tabel",
+      "difference_from_target_bytes": -36303,
+      "fictitious_content_check": {
+        "basis": "generator source uses fictional templates; extracted text and metadata contain no detected email, 11+ digit identifier, or local path",
+        "email_addresses_found": 0,
+        "long_digit_sequences_found": 0,
+        "status": "no personal-data patterns found"
+      },
+      "filename": "P07.pdf",
+      "local_path_in_metadata_or_extracted_text": false,
+      "metadata": {
+        "author": "Data sintetis",
+        "creation_date": "2000-01-01T00:00:00+00:00",
+        "creator": "CipherStego synthetic dataset generator",
+        "modification_date": "2000-01-01T00:00:00+00:00",
+        "producer": "ReportLab PDF Library - (opensource)",
+        "subject": "Konten fiktif untuk pengujian lokal",
+        "title": "P07 - Dokumen sintetis"
+      },
+      "page_count": 7,
+      "page_image_objects": [
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
+      ],
+      "pdf_validation": "valid; pypdf strict-open, PDF signature/EOF, unencrypted",
+      "privacy_review": "manual_review_required",
+      "render_validation": {
+        "rendered_page_count": 7,
+        "rendered_pngs_opened": true,
+        "status": "valid"
+      },
+      "sample_id": "P07",
+      "scan_as_full_page_low_resolution_raster": true,
+      "sha256": "4a1703e7540739be513b7ca007c4ff407cf95ada8c8d9405864e30bdd3b2e887",
+      "size_bytes": 270897,
+      "size_kib": 264.548,
+      "target_kib": 300
+    },
+    {
+      "capacity_calculation": {
+        "capacity_ratio_percent": 47.3084,
+        "cover_dimensions": [
+          1920,
+          1080
+        ],
+        "cover_rgb_capacity_bits": 6220800,
+        "gcm_tag_bytes": 16,
+        "header_bytes": 32,
+        "pdf_bytes": 367822,
+        "total_embedded_bytes": 367870
+      },
+      "characteristic": "Dokumen pindai beresolusi rendah",
+      "difference_from_target_bytes": -41778,
+      "fictitious_content_check": {
+        "basis": "generator source uses fictional templates; extracted text and metadata contain no detected email, 11+ digit identifier, or local path",
+        "email_addresses_found": 0,
+        "long_digit_sequences_found": 0,
+        "status": "no personal-data patterns found"
+      },
+      "filename": "P08.pdf",
+      "local_path_in_metadata_or_extracted_text": false,
+      "metadata": {
+        "author": "Data sintetis",
+        "creation_date": "2000-01-01T00:00:00+00:00",
+        "creator": "CipherStego synthetic dataset generator",
+        "modification_date": "2000-01-01T00:00:00+00:00",
+        "producer": "ReportLab PDF Library - (opensource)",
+        "subject": "Konten fiktif untuk pengujian lokal",
+        "title": "P08 - Dokumen sintetis"
+      },
+      "page_count": 4,
+      "page_image_objects": [
+        [
+          {
+            "bits_per_component": 8,
+            "color_space": "/DeviceRGB",
+            "filter": "['/ASCII85Decode', '/DCTDecode']",
+            "height": 1202,
+            "name": "/FormXob.76524a9e603c50a06943002449108614",
+            "width": 850
+          }
+        ],
+        [
+          {
+            "bits_per_component": 8,
+            "color_space": "/DeviceRGB",
+            "filter": "['/ASCII85Decode', '/DCTDecode']",
+            "height": 1202,
+            "name": "/FormXob.c81b6253fb8d3447d7096acb9c7bb244",
+            "width": 850
+          }
+        ],
+        [
+          {
+            "bits_per_component": 8,
+            "color_space": "/DeviceRGB",
+            "filter": "['/ASCII85Decode', '/DCTDecode']",
+            "height": 1202,
+            "name": "/FormXob.f46f93f4578e5f442b6e8e13ccb4e60e",
+            "width": 850
+          }
+        ],
+        [
+          {
+            "bits_per_component": 8,
+            "color_space": "/DeviceRGB",
+            "filter": "['/ASCII85Decode', '/DCTDecode']",
+            "height": 1202,
+            "name": "/FormXob.86c56cea92443add580833dd303b13e8",
+            "width": 850
+          }
+        ]
+      ],
+      "pdf_validation": "valid; pypdf strict-open, PDF signature/EOF, unencrypted",
+      "privacy_review": "manual_review_required",
+      "render_validation": {
+        "rendered_page_count": 4,
+        "rendered_pngs_opened": true,
+        "status": "valid"
+      },
+      "sample_id": "P08",
+      "scan_as_full_page_low_resolution_raster": true,
+      "sha256": "df0560639e6e08c82c04f0e5f80a5763bbb93960f4762c82fdd391e1686ca924",
+      "size_bytes": 367822,
+      "size_kib": 359.201,
+      "target_kib": 400
+    },
+    {
+      "capacity_calculation": {
+        "capacity_ratio_percent": 61.2636,
+        "cover_dimensions": [
+          1920,
+          1080
+        ],
+        "cover_rgb_capacity_bits": 6220800,
+        "gcm_tag_bytes": 16,
+        "header_bytes": 32,
+        "pdf_bytes": 476338,
+        "total_embedded_bytes": 476386
+      },
+      "characteristic": "Dokumen teks dan foto",
+      "difference_from_target_bytes": -35662,
+      "fictitious_content_check": {
+        "basis": "generator source uses fictional templates; extracted text and metadata contain no detected email, 11+ digit identifier, or local path",
+        "email_addresses_found": 0,
+        "long_digit_sequences_found": 0,
+        "status": "no personal-data patterns found"
+      },
+      "filename": "P09.pdf",
+      "local_path_in_metadata_or_extracted_text": false,
+      "metadata": {
+        "author": "Data sintetis",
+        "creation_date": "2000-01-01T00:00:00+00:00",
+        "creator": "CipherStego synthetic dataset generator",
+        "modification_date": "2000-01-01T00:00:00+00:00",
+        "producer": "ReportLab PDF Library - (opensource)",
+        "subject": "Konten fiktif untuk pengujian lokal",
+        "title": "P09 - Dokumen sintetis"
+      },
+      "page_count": 6,
+      "page_image_objects": [
+        [
+          {
+            "bits_per_component": 8,
+            "color_space": "/DeviceRGB",
+            "filter": "['/ASCII85Decode', '/DCTDecode']",
+            "height": 520,
+            "name": "/FormXob.5eebb2ae144b9d12cb6437124427e421",
+            "width": 780
+          }
+        ],
+        [
+          {
+            "bits_per_component": 8,
+            "color_space": "/DeviceRGB",
+            "filter": "['/ASCII85Decode', '/DCTDecode']",
+            "height": 520,
+            "name": "/FormXob.be5fad7c0e119dcf0f8aa74ed724cffd",
+            "width": 780
+          }
+        ],
+        [
+          {
+            "bits_per_component": 8,
+            "color_space": "/DeviceRGB",
+            "filter": "['/ASCII85Decode', '/DCTDecode']",
+            "height": 520,
+            "name": "/FormXob.a9900e90cc73d6c47e0b5fcd2ae2b1c5",
+            "width": 780
+          }
+        ],
+        [
+          {
+            "bits_per_component": 8,
+            "color_space": "/DeviceRGB",
+            "filter": "['/ASCII85Decode', '/DCTDecode']",
+            "height": 520,
+            "name": "/FormXob.7a59d47241d269d5daff78b5a011fcae",
+            "width": 780
+          }
+        ],
+        [
+          {
+            "bits_per_component": 8,
+            "color_space": "/DeviceRGB",
+            "filter": "['/ASCII85Decode', '/DCTDecode']",
+            "height": 520,
+            "name": "/FormXob.8ce6ee62d648a5fe19c6f75f458c608e",
+            "width": 780
+          }
+        ],
+        [
+          {
+            "bits_per_component": 8,
+            "color_space": "/DeviceRGB",
+            "filter": "['/ASCII85Decode', '/DCTDecode']",
+            "height": 520,
+            "name": "/FormXob.667dc5c86e87d4efd80869ece25a6acf",
+            "width": 780
+          }
+        ]
+      ],
+      "pdf_validation": "valid; pypdf strict-open, PDF signature/EOF, unencrypted",
+      "privacy_review": "manual_review_required",
+      "render_validation": {
+        "rendered_page_count": 6,
+        "rendered_pngs_opened": true,
+        "status": "valid"
+      },
+      "sample_id": "P09",
+      "scan_as_full_page_low_resolution_raster": true,
+      "sha256": "b85b4d0c753b5741b5426cb5ddd8d41c65b9c4b8e06cd8963d792ca53668f96c",
+      "size_bytes": 476338,
+      "size_kib": 465.174,
+      "target_kib": 500
+    },
+    {
+      "capacity_calculation": {
+        "capacity_ratio_percent": 70.8601,
+        "cover_dimensions": [
+          1920,
+          1080
+        ],
+        "cover_rgb_capacity_bits": 6220800,
+        "gcm_tag_bytes": 16,
+        "header_bytes": 32,
+        "pdf_bytes": 550960,
+        "total_embedded_bytes": 551008
+      },
+      "characteristic": "Dokumen pindai beberapa halaman",
+      "difference_from_target_bytes": -63440,
+      "fictitious_content_check": {
+        "basis": "generator source uses fictional templates; extracted text and metadata contain no detected email, 11+ digit identifier, or local path",
+        "email_addresses_found": 0,
+        "long_digit_sequences_found": 0,
+        "status": "no personal-data patterns found"
+      },
+      "filename": "P10.pdf",
+      "local_path_in_metadata_or_extracted_text": false,
+      "metadata": {
+        "author": "Data sintetis",
+        "creation_date": "2000-01-01T00:00:00+00:00",
+        "creator": "CipherStego synthetic dataset generator",
+        "modification_date": "2000-01-01T00:00:00+00:00",
+        "producer": "ReportLab PDF Library - (opensource)",
+        "subject": "Konten fiktif untuk pengujian lokal",
+        "title": "P10 - Dokumen sintetis"
+      },
+      "page_count": 6,
+      "page_image_objects": [
+        [
+          {
+            "bits_per_component": 8,
+            "color_space": "/DeviceRGB",
+            "filter": "['/ASCII85Decode', '/DCTDecode']",
+            "height": 1202,
+            "name": "/FormXob.89938bad42fef42dfd7e79f7275f1bf0",
+            "width": 850
+          }
+        ],
+        [
+          {
+            "bits_per_component": 8,
+            "color_space": "/DeviceRGB",
+            "filter": "['/ASCII85Decode', '/DCTDecode']",
+            "height": 1202,
+            "name": "/FormXob.e63beda89807acc93f28840203adeb8a",
+            "width": 850
+          }
+        ],
+        [
+          {
+            "bits_per_component": 8,
+            "color_space": "/DeviceRGB",
+            "filter": "['/ASCII85Decode', '/DCTDecode']",
+            "height": 1202,
+            "name": "/FormXob.fca1cbbefbc01d4cfbd5c656321b49d6",
+            "width": 850
+          }
+        ],
+        [
+          {
+            "bits_per_component": 8,
+            "color_space": "/DeviceRGB",
+            "filter": "['/ASCII85Decode', '/DCTDecode']",
+            "height": 1202,
+            "name": "/FormXob.9ca64a857b1e9340225b2cb039156e35",
+            "width": 850
+          }
+        ],
+        [
+          {
+            "bits_per_component": 8,
+            "color_space": "/DeviceRGB",
+            "filter": "['/ASCII85Decode', '/DCTDecode']",
+            "height": 1202,
+            "name": "/FormXob.0d1b811cbfc3a32c70320b94e00fd8f9",
+            "width": 850
+          }
+        ],
+        [
+          {
+            "bits_per_component": 8,
+            "color_space": "/DeviceRGB",
+            "filter": "['/ASCII85Decode', '/DCTDecode']",
+            "height": 1202,
+            "name": "/FormXob.62cc7d6d0881f8df095909f853bdca7a",
+            "width": 850
+          }
+        ]
+      ],
+      "pdf_validation": "valid; pypdf strict-open, PDF signature/EOF, unencrypted",
+      "privacy_review": "manual_review_required",
+      "render_validation": {
+        "rendered_page_count": 6,
+        "rendered_pngs_opened": true,
+        "status": "valid"
+      },
+      "sample_id": "P10",
+      "scan_as_full_page_low_resolution_raster": true,
+      "sha256": "648075fdc32bacc0727ce65194c22f5a3bc8fa40b98f86760517366962d5a930",
+      "size_bytes": 550960,
+      "size_kib": 538.047,
+      "target_kib": 600
+    }
+  ],
+  "scope": "P01-P10 synthetic PDFs; no preflight, pilot, or formal experiment was run."
+}

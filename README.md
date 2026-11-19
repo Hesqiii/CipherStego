@@ -20,7 +20,7 @@ Aplikasi akademik lokal untuk demonstrasi pengamanan PDF dan steganografi PNG se
 
 **Milestone 8 — Experiment runner: runner dan preflight disiapkan; eksperimen belum dapat dijalankan.** Folder dataset belum memuat P01–P10 dan C1–C3. Lihat [panduan experiment runner](docs/experiment_runner.md). Proposal resmi menetapkan S1 untuk kedua metode; instruksi ringkas Milestone 8 menyebut Randomized saja, sehingga runner mengikuti proposal dan mempertahankan cakupan kedua metode.
 
-Frontend disajikan dari `frontend/`; asetnya tetap HTML/CSS/JavaScript lokal tanpa CDN. Folder `app/` lama dipertahankan untuk referensi dan tidak disajikan karena berisi source Python lama. UI tidak diubah pada Milestone 2.
+Frontend aktif disajikan dari `frontend/` oleh FastAPI; aset HTML/CSS/JavaScript berjalan lokal tanpa CDN. Prototipe Android tetap berada di `android/` sebagai arsip.
 
 ## Status frontend
 
@@ -120,7 +120,8 @@ Tes mencakup vektor PBKDF2 dan RFC 5869 HKDF, AES-GCM dan autentikasi, header da
 - Frontend mengirim JSON Base64 hanya ke endpoint relatif lokal. Passphrase tidak masuk ke `localStorage`, `sessionStorage`, atau log; hasil sebelumnya dibersihkan saat input terkait berubah dan URL unduhan dicabut saat hasil dibersihkan.
 - PDF hasil tidak ditampilkan di browser. Receiver hanya menyediakan tautan unduh setelah backend mengembalikan `authenticated: true` sesudah pemeriksaan tag GCM.
 - Sender/receiver API dan UI mendukung Sequential serta Key-Based Randomized LSB.
-- Evaluation Engine tersedia untuk satu sampel. Eksperimen dataset dan benchmark formal belum dimulai.
+- Halaman Evaluasi menjalankan endpoint satu sampel dan menampilkan MSE/PSNR/SSIM, waktu tahap, status chi-square/RS, hash, dan hasil pemulihan. Pengukuran ini tidak disimpan dan bukan eksperimen formal.
+- Evaluation Engine tersedia untuk satu sampel. Eksperimen dataset dan benchmark formal tetap terpisah dari penggunaan website.
 
 ## Roadmap
 
@@ -129,7 +130,7 @@ Tes mencakup vektor PBKDF2 dan RFC 5869 HKDF, AES-GCM dan autentikasi, header da
 3. Sequential LSB — selesai secara standalone.
 4. Key-Based Randomized LSB engine — selesai sebagai modul mandiri.
 5. Integrasi sender/receiver ke UI — selesai untuk Sequential dan Key-Based Randomized LSB.
-6. Evaluation Engine — MSE/PSNR/SSIM, chi-square, dan RS tersedia untuk satu sampel; belum menggantikan eksperimen formal.
+6. Evaluation Engine — MSE/PSNR/SSIM, chi-square, dan RS tersedia untuk satu sampel melalui API dan halaman Evaluasi; belum menggantikan eksperimen formal.
 7. Eksperimen dan finalization — runner tersedia; preflight menemukan dataset penelitian belum disediakan. Pilot dan matriks formal belum dijalankan.
 
 Proposal penelitian adalah sumber kebenaran spesifikasi. Jangan mengubah jumlah sampel, kombinasi eksperimen, metrik, algoritma, atau parameter cryptography tanpa revisi proposal yang disetujui.

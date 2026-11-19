@@ -1,0 +1,97 @@
+{
+  "alpha": 0.05,
+  "confidence_interval": "Deterministic 20,000-resample percentile bootstrap over paired conditions; report is not a population claim beyond fixed dataset.",
+  "generalization_limit": "Three fixed cover images and ten fixed payloads; interpret as paired case study only.",
+  "h1_equivalence": {
+    "equivalence_supported": true,
+    "interpretation": "Tidak mendukung kesetaraan bila satu atau lebih CI 95% tidak seluruhnya berada di dalam marginnya.",
+    "margins": {
+      "mse_relative_difference": 0.05,
+      "psnr_difference_db": 0.23,
+      "ssim_difference": 0.005
+    },
+    "metric_ci_checks": {
+      "mse_relative_difference": true,
+      "psnr_difference_db": true,
+      "ssim_difference": true
+    }
+  },
+  "h2_direction": "Nilai mean_paired_difference negatif pada chi_detection_difference berarti proporsi indikator Randomized lebih rendah dalam kondisi berpasangan.",
+  "multiple_comparison_method": "Holm step-down over 7 metric/detector families",
+  "status": "computed",
+  "unit_of_analysis": "30 payload-cover paired conditions; five timing repetitions first summarized as mean and sample SD per condition",
+  "wilcoxon": {
+    "chi_detection_difference": {
+      "ci95_mean_difference_high": -0.16666666666666666,
+      "ci95_mean_difference_low": -0.5,
+      "holm_adjusted_p_value": 0.006261609032010192,
+      "mean_paired_difference": -0.3333333333333333,
+      "median_paired_difference": 0.0,
+      "n_pairs": 30,
+      "p_value": 0.001565402258002548,
+      "rank_biserial_effect": -1.0,
+      "status": "computed"
+    },
+    "embedding_mean_difference_ms": {
+      "ci95_mean_difference_high": 21080.331217016665,
+      "ci95_mean_difference_low": 15951.906572000002,
+      "holm_adjusted_p_value": 1.1175870895385742e-08,
+      "mean_paired_difference": 18407.189452000002,
+      "median_paired_difference": 15426.238089999999,
+      "n_pairs": 30,
+      "p_value": 1.862645149230957e-09,
+      "rank_biserial_effect": 1.0,
+      "status": "computed"
+    },
+    "extraction_mean_difference_ms": {
+      "ci95_mean_difference_high": 20375.111496999998,
+      "ci95_mean_difference_low": 15676.331089833331,
+      "holm_adjusted_p_value": 1.1175870895385742e-08,
+      "mean_paired_difference": 17971.460939333334,
+      "median_paired_difference": 14091.695510000001,
+      "n_pairs": 30,
+      "p_value": 1.862645149230957e-09,
+      "rank_biserial_effect": 1.0,
+      "status": "computed"
+    },
+    "mse_relative_difference": {
+      "ci95_mean_difference_high": 0.000987575662618415,
+      "ci95_mean_difference_low": -0.0003573559206754105,
+      "holm_adjusted_p_value": 1.0,
+      "mean_paired_difference": 0.00028657579070424656,
+      "median_paired_difference": -0.00011481751284131425,
+      "n_pairs": 30,
+      "p_value": 0.7765688337385654,
+      "rank_biserial_effect": 0.06236559139784946,
+      "status": "computed"
+    },
+    "psnr_difference_db": {
+      "ci95_mean_difference_high": 0.0015572796674619203,
+      "ci95_mean_difference_low": -0.004276696558585063,
+      "holm_adjusted_p_value": 1.0,
+      "mean_paired_difference": -0.0012369025449331162,
+      "median_paired_difference": 0.0004987101828000107,
+      "n_pairs": 30,
+      "p_value": 0.7765688337385654,
+      "rank_biserial_effect": -0.06236559139784946,
+      "status": "computed"
+    },
+    "rs_relative_error_difference": {
+      "holm_adjusted_p_value": null,
+      "n_pairs": 0,
+      "p_value": null,
+      "status": "insufficient_pairs"
+    },
+    "ssim_difference": {
+      "ci95_mean_difference_high": 2.9862290020561582e-05,
+      "ci95_mean_difference_low": -0.0002317230039127661,
+      "holm_adjusted_p_value": 1.0,
+      "mean_paired_difference": -9.454798677135019e-05,
+      "median_paired_difference": -1.0578223426593869e-05,
+      "n_pairs": 30,
+      "p_value": 0.3817984350025654,
+      "rank_biserial_effect": -0.1870967741935484,
+      "status": "computed"
+    }
+  }
+}

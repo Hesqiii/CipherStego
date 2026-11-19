@@ -227,6 +227,18 @@ tbody td { color: #46545f; }
 .evaluation-status { display: flex; align-items: flex-start; gap: 10px; margin-top: 15px; padding: 12px 13px; border: 1px solid var(--line); border-radius: var(--radius-sm); background: var(--surface-soft); }
 .evaluation-status p { margin: 0; color: #34434e; font-size: 14px; }
 .pending-pip { margin-top: 6px; background: #89600f; }
+.evaluation-grid { margin-bottom: 20px; }
+.evaluation-metadata { margin-bottom: 17px; }
+.result-table-section { padding: 17px 0 0; }
+.evaluation-subheading { margin: 22px 0 10px; font-size: 15px; font-weight: 650; }
+.analysis-results { display: grid; gap: 10px; margin-top: 12px; }
+.analysis-card { padding: 13px; border: 1px solid var(--line); border-radius: var(--radius-sm); background: var(--surface-soft); }
+.analysis-card h4 { margin: 0 0 6px; font-size: 14px; }
+.analysis-card p, .analysis-card li { margin: 5px 0 0; color: #43515d; font-size: 13px; line-height: 1.5; overflow-wrap: anywhere; }
+.analysis-card ul { margin: 8px 0 0; padding-left: 20px; }
+.evaluation-status[data-kind="success"] { border-color: #a9cdbb; background: var(--green-pale); }
+.evaluation-status[data-kind="error"] { border-color: #dba5a1; background: var(--red-pale); }
+.evaluation-status[data-kind="error"] p { color: #681b17; }
 
 @media (max-width: 1120px) {
   .sidebar { width: 225px; }

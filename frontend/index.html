@@ -261,42 +261,75 @@
       <header class="page-heading">
         <div>
           <p class="eyebrow">03 / EVALUASI</p>
-          <h1 id="evaluate-title" tabindex="-1">Rencana pengujian</h1>
-          <p class="page-intro">Metrik dan perbandingan mengikuti skenario proposal.</p>
+          <h1 id="evaluate-title" tabindex="-1">Evaluasi satu sampel</h1>
+          <p class="page-intro">Jalankan pengukuran nyata pada satu PDF dan satu cover PNG.</p>
         </div>
-        <div class="method-stamp pending-stamp"><span class="stamp-dot" aria-hidden="true"></span>Menunggu backend</div>
+        <div class="method-stamp" id="evaluate-method-stamp"><span class="stamp-dot" aria-hidden="true"></span>Sequential LSB</div>
       </header>
 
-      <section class="panel study-panel" aria-labelledby="study-title">
-        <div class="study-intro">
-          <div class="panel-heading"><span class="step-mark" aria-hidden="true">S</span><div><h2 id="study-title">Rancangan eksperimen</h2><p>API dapat mengevaluasi satu sampel; halaman ini belum mengirim permintaan evaluasi.</p></div></div>
-          <dl class="study-facts">
-            <div><dt>Payload</dt><dd>10 PDF · 10–600 KiB</dd></div>
-            <div><dt>Cover</dt><dd>3 PNG RGB · 1920 × 1080</dd></div>
-            <div><dt>Perbandingan</dt><dd>30 pasangan metode</dd></div>
-            <div><dt>Pengulangan waktu</dt><dd>5 kali per kombinasi</dd></div>
-          </dl>
-        </div>
-        <div class="table-section">
-          <div class="table-heading"><div><h2>Metrik penelitian</h2><p>Belum ada hasil eksperimen yang ditampilkan pada halaman ini.</p></div><span class="pending-label">Belum ada hasil</span></div>
-          <div class="table-wrap" role="region" aria-label="Tabel metrik penelitian" tabindex="0">
-            <table>
-              <thead><tr><th scope="col">Metrik</th><th scope="col">Sequential LSB</th><th scope="col">Key-Based Randomized LSB</th><th scope="col">Status</th></tr></thead>
-              <tbody>
-                <tr><th scope="row">MSE, PSNR, SSIM</th><td>MSE/PSNR tersedia melalui API</td><td>MSE/PSNR tersedia melalui API</td><td>SSIM belum terdefinisi lengkap</td></tr>
-                <tr><th scope="row">Waktu embedding dan extraction</th><td>Tersedia per permintaan API</td><td>Tersedia per permintaan API</td><td>Belum ada lima ulangan eksperimen</td></tr>
-                <tr><th scope="row">Chi-square dan RS analysis</th><td>Belum dianalisis</td><td>Belum dianalisis</td><td>Metodologi belum terdefinisi lengkap</td></tr>
-              </tbody>
-            </table>
+      <div class="work-grid evaluation-grid">
+        <section class="panel input-panel" aria-labelledby="evaluation-input-title">
+          <div class="panel-heading"><span class="step-mark" aria-hidden="true">01</span><div><h2 id="evaluation-input-title">Masukan evaluasi</h2><p>Satu proses embed–extract dan pengukuran lokal.</p></div></div>
+
+          <div class="field-block">
+            <label class="field-label" for="evaluate-pdf">Dokumen PDF</label>
+            <label class="drop-zone" data-drop-zone data-for="evaluate-pdf" tabindex="0">
+              <input class="file-input" id="evaluate-pdf" type="file" accept=".pdf,application/pdf">
+              <svg class="upload-glyph" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16V4m0 0L7.5 8.5M12 4l4.5 4.5M4 14.5v5h16v-5"/></svg>
+              <span class="drop-copy"><strong>Pilih atau jatuhkan PDF</strong><span>Maksimum 600 KiB</span></span><span class="choose-file">Pilih PDF</span>
+            </label>
+            <div class="file-summary" id="evaluate-pdf-summary" hidden></div>
           </div>
-          <div class="evaluation-status" role="status"><span class="status-pip pending-pip" aria-hidden="true"></span><p>Endpoint evaluasi satu sampel tersedia; halaman ini belum menjalankan atau menyimpan pengukuran.</p></div>
-        </div>
-      </section>
+
+          <div class="field-block">
+            <label class="field-label" for="evaluate-cover">Cover PNG</label>
+            <label class="drop-zone" data-drop-zone data-for="evaluate-cover" tabindex="0">
+              <input class="file-input" id="evaluate-cover" type="file" accept=".png,image/png">
+              <svg class="upload-glyph" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16V4m0 0L7.5 8.5M12 4l4.5 4.5M4 14.5v5h16v-5"/></svg>
+              <span class="drop-copy"><strong>Pilih atau jatuhkan PNG</strong><span>RGB 8-bit, maksimum 16 MiB</span></span><span class="choose-file">Pilih PNG</span>
+            </label>
+            <div class="file-summary" id="evaluate-cover-summary" hidden></div>
+            <figure class="preview-frame" id="evaluate-cover-frame" hidden><img id="evaluate-cover-preview" alt="Pratinjau cover PNG evaluasi"><figcaption class="preview-caption" id="evaluate-cover-caption"></figcaption></figure>
+          </div>
+
+          <fieldset class="method-choice">
+            <legend>Metode penyisipan</legend>
+            <label class="method-option selected"><input type="radio" name="evaluate-mode" value="sequential" checked><span><strong>Sequential LSB</strong><small>Bit payload mengisi kanal RGB secara berurutan.</small></span></label>
+            <label class="method-option"><input type="radio" name="evaluate-mode" value="randomized"><span><strong>Key-Based Randomized LSB</strong><small>Posisi payload diacak secara deterministik dari kunci.</small></span></label>
+          </fieldset>
+
+          <div class="field-block passphrase-block">
+            <label class="field-label" for="evaluate-pass">Passphrase</label>
+            <div class="password-control"><input id="evaluate-pass" type="password" minlength="12" maxlength="1024" autocomplete="new-password" spellcheck="false" placeholder="Minimal 12 karakter"><button class="text-button" type="button" data-toggle-password="evaluate-pass" aria-pressed="false">Tampilkan</button></div>
+            <p class="field-help">Hanya dikirim ke backend lokal untuk pengukuran; tidak disimpan di browser.</p>
+          </div>
+          <div class="action-block"><button class="button primary" id="evaluate-submit" type="button" disabled>Jalankan evaluasi</button><p class="status" id="evaluate-status" role="status" aria-live="polite">Menunggu backend lokal siap.</p></div>
+        </section>
+
+        <section class="panel output-panel" aria-labelledby="evaluation-result-title">
+          <div class="panel-heading"><span class="step-mark output-mark" aria-hidden="true">02</span><div><h2 id="evaluation-result-title">Hasil pengukuran</h2><p>Nilai berasal dari respons API untuk sampel ini.</p></div></div>
+          <div class="empty-state" id="evaluate-empty"><div class="empty-document" aria-hidden="true"><span></span><span></span><span></span></div><h3>Belum ada hasil</h3><p>Pilih PDF, cover PNG, metode, dan passphrase untuk memulai.</p></div>
+          <div id="evaluate-result" hidden>
+            <div class="evaluation-status" id="evaluate-result-status" role="status"><span class="status-pip" aria-hidden="true"></span><p></p></div>
+            <dl class="result-metadata evaluation-metadata">
+              <div><dt>Metode dan dimensi</dt><dd id="evaluation-method-size"></dd></div>
+              <div><dt>Pemulihan PDF</dt><dd id="evaluation-recovery"></dd></div>
+              <div class="hash-row"><dt>SHA-256 sumber / pulih</dt><dd id="evaluation-hash"></dd></div>
+            </dl>
+            <div class="table-section result-table-section">
+              <div class="table-heading"><div><h2>Metrik visual</h2><p>Nilai, satuan, dan status yang dilaporkan backend.</p></div></div>
+              <div class="table-wrap" role="region" aria-label="Hasil metrik visual" tabindex="0"><table><thead><tr><th scope="col">Metrik</th><th scope="col">Nilai</th><th scope="col">Status / keterangan</th></tr></thead><tbody id="evaluation-metrics"></tbody></table></div>
+              <h3 class="evaluation-subheading">Waktu proses</h3><div class="table-wrap" role="region" aria-label="Waktu proses evaluasi" tabindex="0"><table><thead><tr><th scope="col">Tahap</th><th scope="col">Waktu</th></tr></thead><tbody id="evaluation-timings"></tbody></table></div>
+              <h3 class="evaluation-subheading">Analisis steganalisis</h3><div id="evaluation-steganalysis" class="analysis-results"></div>
+            </div>
+          </div>
+        </section>
+      </div>
 
       <section class="process-note" aria-label="Batas interpretasi">
         <span class="process-label">INTERPRETASI</span>
-        <p>Belum ada angka hasil pada halaman ini.</p>
-        <small>Pengujian satu pasangan tidak menggantikan dataset proposal. Chi-square dan RS analysis juga bukan bukti bahwa pesan tidak dapat dideteksi.</small>
+        <p>Evaluasi halaman ini hanya mengukur satu sampel dan tidak menyimpan hasil eksperimen.</p>
+        <small>Hasil satu sampel bukan pengganti eksperimen proposal yang memiliki 30 kombinasi dan lima pengulangan waktu. Chi-square dan RS merupakan analisis indikatif; status tidak estimable/unreliable dan alasannya ditampilkan apa adanya.</small>
       </section>
     </section>
   </main>

@@ -1,0 +1,10 @@
+﻿scope,pair_id,payload_id,cover_id,mode,channel,status,reason,groups,cover_initial_bias_fraction,stego_raw_fraction,corrected_fraction,corrected_estimated_bits,actual_embedded_bits,absolute_error_bits,relative_error
+cover_control,,,C1,,red,unreliable,"Estimasi RS berada di luar rentang [0, 1].",518400,,,,,,,
+cover_control,,,C1,,green,computed,,518400,0.0005470753026853235,0.0005470753026853235,0.0,0.0,,,
+cover_control,,,C1,,blue,unreliable,"Estimasi RS berada di luar rentang [0, 1].",518400,,,,,,,
+stego,P01_C1,P01,C1,sequential,,unreliable,"Estimasi RS berada di luar rentang [0, 1].",518400,,,,,47280,,
+stego,P01_C1,P01,C1,sequential,,unreliable,"Estimasi RS berada di luar rentang [0, 1].",518400,0.0005470753026853235,,,,47280,,
+stego,P01_C1,P01,C1,sequential,,unreliable,"Estimasi RS berada di luar rentang [0, 1].",518400,,,,,47280,,
+stego,P01_C1,P01,C1,randomized,,unreliable,"Estimasi RS berada di luar rentang [0, 1].",518400,,,,,46979,,
+stego,P01_C1,P01,C1,randomized,,unreliable,"Estimasi setelah koreksi bias berada di luar rentang [0, 1].",518400,0.0005470753026853235,0.0003458845317377763,,,47206,,
+stego,P01_C1,P01,C1,randomized,,unreliable,"Estimasi RS berada di luar rentang [0, 1].",518400,,,,,47655,,

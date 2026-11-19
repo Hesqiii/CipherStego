@@ -65,3 +65,11 @@ desktop.ini
 .ui-audit-*.png
 tmp/
 temp/
+
+# Large formal-run raw images; keep compact summaries and reports
+experiment_data/raw/
+# Local privacy-review previews and extracted text
+experiment_data/reports/privacy_review/
+# Frontend dependency installs (if added locally)
+node_modules/
+**/node_modules/

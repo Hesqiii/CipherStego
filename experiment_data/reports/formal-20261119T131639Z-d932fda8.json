@@ -1,0 +1,117 @@
+{
+  "completed_utc": "2026-11-19T14:56:48.503170+00:00",
+  "condition_count": 30,
+  "dataset_fingerprint": "008e8cdbe2fce9dbdfae9417ace3e6650a38f1f84a8681e477cb1b9e826d8661",
+  "dataset_manifest_sha256": "93b971fb3a65e5641ce79f5f911860f2465549c4d8949319f1d050e3ad2afea7",
+  "formal_experiment": true,
+  "integrity_all_passed": true,
+  "method_count": 2,
+  "method_result_count": 60,
+  "passphrase_or_secret_material_recorded": false,
+  "pilot_report_sha256": "e0640cb50e3b69a957ad1905b492d6b91f87b84b18541adb2a13f7477c4b1322",
+  "quality_all_finite": true,
+  "results_path": "raw/formal-20261119T131639Z-d932fda8",
+  "run_id": "formal-20261119T131639Z-d932fda8",
+  "run_type": "formal",
+  "schema_version": 1,
+  "security_checks": [
+    {
+      "error_type": "AuthenticationError",
+      "failure_stage": "gcm_authentication",
+      "pdf_created": false,
+      "scenario": "wrong_passphrase",
+      "status": "rejected"
+    },
+    {
+      "error_type": "AuthenticationError",
+      "failure_stage": "gcm_authentication",
+      "pdf_created": false,
+      "scenario": "ciphertext_bit",
+      "status": "rejected"
+    },
+    {
+      "error_type": "AuthenticationError",
+      "failure_stage": "gcm_authentication",
+      "pdf_created": false,
+      "scenario": "salt",
+      "status": "rejected"
+    },
+    {
+      "error_type": "AuthenticationError",
+      "failure_stage": "gcm_authentication",
+      "pdf_created": false,
+      "scenario": "nonce",
+      "status": "rejected"
+    },
+    {
+      "error_type": "AuthenticationError",
+      "failure_stage": "gcm_authentication",
+      "pdf_created": false,
+      "scenario": "length_valid",
+      "status": "rejected"
+    },
+    {
+      "error_type": "InsufficientCapacityError",
+      "failure_stage": "capacity_validation",
+      "pdf_created": false,
+      "scenario": "length_over_capacity",
+      "status": "rejected"
+    },
+    {
+      "error_type": "AuthenticationError",
+      "failure_stage": "gcm_authentication",
+      "pdf_created": false,
+      "scenario": "wrong_passphrase",
+      "status": "rejected"
+    },
+    {
+      "error_type": "AuthenticationError",
+      "failure_stage": "gcm_authentication",
+      "pdf_created": false,
+      "scenario": "ciphertext_bit",
+      "status": "rejected"
+    },
+    {
+      "error_type": "AuthenticationError",
+      "failure_stage": "gcm_authentication",
+      "pdf_created": false,
+      "scenario": "salt",
+      "status": "rejected"
+    },
+    {
+      "error_type": "AuthenticationError",
+      "failure_stage": "gcm_authentication",
+      "pdf_created": false,
+      "scenario": "nonce",
+      "status": "rejected"
+    },
+    {
+      "error_type": "AuthenticationError",
+      "failure_stage": "gcm_authentication",
+      "pdf_created": false,
+      "scenario": "length_valid",
+      "status": "rejected"
+    },
+    {
+      "error_type": "InsufficientCapacityError",
+      "failure_stage": "capacity_validation",
+      "pdf_created": false,
+      "scenario": "length_over_capacity",
+      "status": "rejected"
+    }
+  ],
+  "security_checks_all_rejected": true,
+  "software": {
+    "cryptography": "50.0.2",
+    "numpy": "2.5.4",
+    "pillow": "13.0.0",
+    "platform": "Windows-11-10.0.26300-SP0",
+    "processor": "Intel64 Family 6 Model 154 Stepping 3, GenuineIntel",
+    "python": "3.14.9",
+    "scikit_image": "0.26.0",
+    "scipy": "1.18.1"
+  },
+  "summary_path": "summaries/formal-20261119T131639Z-d932fda8",
+  "timed_repetitions_per_condition_method": 5,
+  "warmup_per_method": 1
+}
